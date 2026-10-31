@@ -33,6 +33,14 @@
    "sha256": "a6e1d7bdba06824c1ccf5f68fa0647df7566c5d09b147bc9c1d6d14d29e2ee70",
    "bytes": 3028723
   },
+  "defillama/revenue_near-intents.json": {
+   "url": "https://api.llama.fi/summary/fees/near-intents?dataType=dailyRevenue",
+   "method": "GET",
+   "body": null,
+   "fetched_at": "2026-10-31T16:08:46.115Z",
+   "sha256": "09c7bdcc4f40dc25fc5ad48a895c50a538a4e1b4c55f1324686dbd1f4fb11faf",
+   "bytes": 35859
+  },
   "fastnear/boundaries.json": {
    "url": "https://tx.main.fastnear.com/v0/block",
    "method": "POST",

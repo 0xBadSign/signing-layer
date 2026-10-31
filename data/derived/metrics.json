@@ -122,6 +122,28 @@
       "last_observation": "2026-10-30",
       "missing_days_after_first_observation": []
     },
+    "intents_revenue_usd": {
+      "unit": "USD per day",
+      "source": [
+        "defillama/revenue_near-intents.json"
+      ],
+      "method": "DefiLlama summary/fees/near-intents?dataType=dailyRevenue totalDataChart: the net Intents revenue captured by NEAR (NEAR/wNEAR swept into its revenue wallets). DefiLlama states that since 2026-02-23 this revenue funds open-market NEAR buybacks (not burned). Data starts 2025-05-10.",
+      "window_end": "2026-10-30",
+      "latest_30d_avg": 71500.53,
+      "latest_30d_n_days": 30,
+      "prev_30d_avg": 61317.1,
+      "mom_pct": 16.61,
+      "avg_30d_ending_91d_earlier": 16347.03,
+      "change_vs_91d_earlier_pct": 337.39,
+      "avg_30d_ending_364d_earlier": 0.6,
+      "yoy_pct": 11916655.56,
+      "peak_30d_avg": 82239.47,
+      "peak_30d_avg_date": "2026-10-16",
+      "latest_vs_peak_pct": -13.06,
+      "first_observation": "2025-05-10",
+      "last_observation": "2026-10-30",
+      "missing_days_after_first_observation": []
+    },
     "near_fees_usd_nearblocks": {
       "unit": "USD per day",
       "source": [
@@ -301,6 +323,16 @@
         "same_quarter_prior_year": "2025-Q3",
         "same_quarter_prior_year_value": 1350465,
         "yoy_pct": 968.87
+      },
+      "intents_revenue_usd": {
+        "last_complete_quarter": "2026-Q3",
+        "value": 3067639,
+        "prior_quarter": "2026-Q2",
+        "prior_quarter_value": 1497829.05,
+        "qoq_pct": 104.81,
+        "same_quarter_prior_year": "2025-Q3",
+        "same_quarter_prior_year_value": 18,
+        "yoy_pct": 17042338.89
       },
       "near_fees_usd_nearblocks": {
         "last_complete_quarter": "2026-Q3",

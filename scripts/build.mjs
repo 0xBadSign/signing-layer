@@ -25,6 +25,7 @@ const P = {
   nb: 'nearblocks/charts.json',
   dex: 'defillama/dexs_near-intents.json',
   fee: 'defillama/fees_near-intents.json',
+  rev: 'defillama/revenue_near-intents.json',
   nearFee: 'defillama/fees_near.json',
   proto: 'defillama/protocol_near-intents.json',
   bounds: 'fastnear/boundaries.json',
@@ -41,6 +42,7 @@ const llamaMap = (rel) => {
 };
 const dexMap = llamaMap(P.dex);
 const feeMap = llamaMap(P.fee);
+const revMap = llamaMap(P.rev);
 const nearFeeMap = llamaMap(P.nearFee);
 const tvlMap = new Map();
 for (const p of readRawJson(P.proto).tvl) tvlMap.set(dayStr(p.date * 1000), p.totalLiquidityUSD);
@@ -68,6 +70,7 @@ const daily = dates.map((d) => {
     intents_txs: countOf('intents.near', d),
     intents_volume_usd: dexMap.has(d) ? dexMap.get(d) : null,
     intents_fees_usd: feeMap.has(d) ? feeMap.get(d) : null,
+    intents_revenue_usd: revMap.has(d) ? revMap.get(d) : null,
     near_fees_usd_nearblocks: nb ? r2(num(nb.txn_fee_usd)) : null,
     near_fees_usd_defillama: nearFeeMap.has(d) ? nearFeeMap.get(d) : null,
     near_txns: nb ? num(nb.txns) : null,
@@ -97,7 +100,7 @@ function writeCsv(name, cols, rows) {
   fs.writeFileSync(path.join(OUT, name), lines.join('\n') + '\n');
 }
 
-const DAILY_COLS = ['date', 'signer_txs', 'intents_txs', 'intents_volume_usd', 'intents_fees_usd', 'near_fees_usd_nearblocks', 'near_fees_usd_defillama', 'near_txns', 'active_accounts', 'new_accounts', 'signer_share_of_near_txns', 'near_price_usd', 'intents_tvl_usd', 'blocks_nearblocks', 'blocks_fastnear', 'blocks_diff_pct'];
+const DAILY_COLS = ['date', 'signer_txs', 'intents_txs', 'intents_volume_usd', 'intents_fees_usd', 'intents_revenue_usd', 'near_fees_usd_nearblocks', 'near_fees_usd_defillama', 'near_txns', 'active_accounts', 'new_accounts', 'signer_share_of_near_txns', 'near_price_usd', 'intents_tvl_usd', 'blocks_nearblocks', 'blocks_fastnear', 'blocks_diff_pct'];
 writeCsv('daily.csv', DAILY_COLS, daily);
 
 // ------------------------------------------------------------------ series definitions
@@ -106,6 +109,7 @@ const SERIES = [
   { key: 'intents_txs', agg: 'sum', unit: 'transactions per day touching intents.near', sources: ['fastnear/counts/intents.near/<date>.json', P.bounds], method: 'FastNEAR POST /v0/account txs_count for account intents.near over the same daily block windows as signer_txs.' },
   { key: 'intents_volume_usd', agg: 'sum', unit: 'USD per day', sources: [P.dex], method: 'DefiLlama summary/dexs/near-intents totalDataChart, daily volume (day = UTC date of the timestamp). Data starts 2024-12-10; earlier days are missing, not zero.' },
   { key: 'intents_fees_usd', agg: 'sum', unit: 'USD per day', sources: [P.fee], method: 'DefiLlama summary/fees/near-intents totalDataChart, daily gross fees. Data starts 2025-05-10; earlier days are missing, not zero.' },
+  { key: 'intents_revenue_usd', agg: 'sum', unit: 'USD per day', sources: [P.rev], method: 'DefiLlama summary/fees/near-intents?dataType=dailyRevenue totalDataChart: the net Intents revenue captured by NEAR (NEAR/wNEAR swept into its revenue wallets). DefiLlama states that since 2026-02-23 this revenue funds open-market NEAR buybacks (not burned). Data starts 2025-05-10.' },
   { key: 'near_fees_usd_nearblocks', agg: 'sum', unit: 'USD per day', sources: [P.nb], method: 'Nearblocks /v1/charts txn_fee_usd per day (NEAR-denominated fee burned/paid times price, as computed by Nearblocks).' },
   { key: 'near_fees_usd_defillama', agg: 'sum', unit: 'USD per day', sources: [P.nearFee], method: 'DefiLlama summary/fees/near totalDataChart, daily chain fees in USD.' },
   { key: 'near_txns', agg: 'sum', unit: 'transactions per day (all NEAR)', sources: [P.nb], method: 'Nearblocks /v1/charts txns per day.' },

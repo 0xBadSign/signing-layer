@@ -45,6 +45,8 @@ const STATIC = [
   ['defillama/fees_near-intents.json', 'https://api.llama.fi/summary/fees/near-intents'],
   ['defillama/fees_near.json', 'https://api.llama.fi/summary/fees/near'],
   ['defillama/protocol_near-intents.json', 'https://api.llama.fi/protocol/near-intents'],
+  // NEAR's captured Intents revenue (used for open-market NEAR buybacks since 2026-02-23, per DefiLlama's methodology).
+  ['defillama/revenue_near-intents.json', 'https://api.llama.fi/summary/fees/near-intents?dataType=dailyRevenue'],
 ];
 
 async function fetchStatic() {
