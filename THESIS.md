@@ -12,7 +12,7 @@ All numbers below come from `data/derived/` (built offline from `data/raw/` by `
 
 | # | Claim | Status in the data |
 |---|---|---|
-| A | Other chains' users and apps use NEAR's MPC network to sign, and that use broadens beyond a few callers | **Partly.** Signing grew 7x in a year, and its callers are getting more diverse. But about half of it is NEAR-native account management, and it is down from its May peak |
+| A | Other chains' users and apps use NEAR's MPC network to sign, and that use broadens beyond a few callers | **Partly.** Signing grew 7x in a year. The cross-chain share of sign calls rose from about 28% to about 58% within 90 days, and the callers are getting more diverse. But total signing is down from its May peak, and a few callers dominate |
 | B | NEAR Intents becomes a large, durable settlement venue | **Yes, so far.** $130M a day, up 134% in a year, a record month in September 2026 |
 | C | Value reaches the NEAR token | **Weakly.** Intents revenue is now 11x NEAR's L1 fees and funds buybacks. Annualized, that is 0.44% of market cap. Issuance is not measured here |
 
@@ -42,8 +42,10 @@ A count of transactions touching the contract overstates user demand, because MP
 | MPC nodes responding in every sampled hour | 17 |
 | Distinct contracts or accounts calling `sign` per sampled hour | median 14 (range 9-23). It rose from 12 in the first half of the sample to 17 in the second half |
 | Distinct `sign` callers across the whole sample | 212 |
+| Cross-chain share of sign calls (bridge and connector contracts) | **about 28% in early August 2026, 57.7% in the last 30 days of samples** (41.2% over the whole sample) |
+| NEAR-native share (`fast-auth.near`) | about 59% in early August, 33.0% in the last 30 days (46.6% over the whole sample) |
 
-So user-driven signing is about half of `signer_txs`: about 15,000 signature requests a day. The callers are getting more diverse, and the new attestation call (proof that a foreign transaction landed) is already in production use. That call matters for the thesis: it makes NEAR a verifier of other chains, not only a signer for them.
+So user-driven signing is about half of `signer_txs`: about 15,000 signature requests a day. The mix is moving toward other chains: bridge and connector contracts (`omni.bridge.near`, `btc-connector.bridge.near`, `zcash-connector.bridge.near`) went from a minority to a majority of sign calls within the sample. Per-day shares are in `data/derived/sample_callers.csv`. The callers are getting more diverse, and the new attestation call (proof that a foreign transaction landed) is already in production use. That call matters for the thesis: it makes NEAR a verifier of other chains, not only a signer for them.
 
 ### 2.2 Settlement layer (NEAR Intents)
 
@@ -83,13 +85,14 @@ Each item argues against the thesis or limits it.
    - Daily active accounts: 996k in October 2024 (monthly mean of daily values), 72.9k now, **-73% in a year**.
    - Transactions: 8.3M a day at the January 2025 peak, 0.74M now, -84% in a year.
    - New accounts: 470k a day at the peak, 9,250 now, -96%.
-   - Monthly NEAR transactions fell from 107.9M in March 2026 to 28.4M in April 2026, -74% in one month. That points to one or a few high-volume applications stopping. We did not identify them (UNVERIFIED).
+   - Most of the 2026 drop happened in one day: NEAR transactions went from 3.76M on 2026-04-01 to 1.06M on 2026-04-02, while active accounts stayed at 131k-139k. That pattern fits one high-volume application stopping, or a change in how transactions are counted, more than users leaving. We did not identify the cause (UNVERIFIED).
    - If the thesis is right, this does not matter much. If it is wrong, this is what NEAR is left with.
 2. **Signing peaked in May 2026 and is down 54% since.** Monthly `signer_txs`: 1.80M in May, 1.30M in September, 0.89M in October (30 days). Growth is not monotonic. The year-over-year figure flatters it, because the base is small.
-3. **About half of signing is NEAR-native, not cross-chain.**
-   - The largest `sign` caller is `fast-auth.near`, with 46.6% of sign calls in the sample. FastAuth uses the MPC network to hold keys for NEAR accounts (email login).
+3. **Much of signing is NEAR-native, not cross-chain.**
+   - The largest `sign` caller over the whole sample is `fast-auth.near`, with 46.6% of sign calls (33.0% in the last 30 days). FastAuth uses the MPC network to hold keys for NEAR accounts (email login).
    - The Ed25519-type domain (domain 1, used for NEAR-style keys) carries 53.5% of sign calls.
-   - Bridge and connector contracts are the clearly cross-chain share: `omni.bridge.near` 21.4%, `btc-connector.bridge.near` 13.0%, `zcash-connector.bridge.near` 6.9%, together **41.2%**.
+   - Bridge and connector contracts are the clearly cross-chain share: `omni.bridge.near` 21.4%, `btc-connector.bridge.near` 13.0%, `zcash-connector.bridge.near` 6.9%, together **41.2%** over the whole sample.
+   - The falling NEAR-native share and the falling total since May are consistent with FastAuth use shrinking while bridge use holds. Our sample covers only the last 90 days, so we cannot show that for May (UNVERIFIED).
    - A load-test account, `tx-bench.near`, accounts for 8.7%.
 4. **Demand is concentrated.** Five callers make about 97% of sign calls (46.6 + 21.4 + 13.0 + 8.7 + 6.9). A median of 14 distinct callers per hour is a small customer base for "a layer".
 5. **Value capture is small and political.**
@@ -116,8 +119,8 @@ Re-evaluate on **2027-04-30** with `make fetch && make rebuild` (the dashboard s
 | Id | Signal | Now (to 2026-10-30) | Strengthens the thesis | Weakens the thesis |
 |---|---|---|---|---|
 | S1 | `v1.signer` transactions/day | 29,556 | a new high above 64,367 | below 15,000, sustained |
-| S2 | Distinct sign callers per sampled hour (median of the last 30 days of samples) | about 17 (second half of the sample) | 30 or more | 10 or fewer |
-| S3 | Cross-chain share of sign calls (bridge and connector contracts) | 41.2% | 55% or more | 25% or less |
+| S2 | Distinct sign callers per sampled hour (median of the last 30 days of samples) | 18 | 30 or more | 10 or fewer |
+| S3 | Cross-chain share of sign calls (bridge and connector contracts, last 30 days of samples) | 57.7% | 70% or more | 35% or less |
 | S4 | Intents volume, USD/day | $130.4M | $250M or more | below $65M, sustained |
 | S5 | NEAR L1 fees, USD/day | $6.4k | $20k or more | (context only) |
 | S6 | Daily active accounts | 72.9k | (context only) | (context only, unless S1 and S4 also weaken) |
@@ -126,7 +129,7 @@ Re-evaluate on **2027-04-30** with `make fetch && make rebuild` (the dashboard s
 **The thesis is wrong if any of these holds:**
 - S1 and S4 are both in the weakening zone: the layer is not growing;
 - S7 weakens while S4 does not: volume grows but NEAR's share is cut;
-- S3 falls to 25% or less: Chain Signatures turns out to be mainly a NEAR wallet feature, not a layer for other chains.
+- S3 falls back to 35% or less: Chain Signatures turns out to be mainly a NEAR wallet feature, not a layer for other chains.
 
 ---
 

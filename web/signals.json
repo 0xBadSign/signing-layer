@@ -1,69 +1,69 @@
 {
-  "schema": 1,
-  "note": "Thresholds are placeholders (null) until the thesis author sets them. Ids are stable and referenced from THESIS.md. supports_if says on which side of the threshold the signing/settlement-layer thesis is supported; it is null until a threshold is set.",
+  "schema": 2,
+  "note": "Thresholds from THESIS.md section 5 (re-evaluate on 2027-04-30). Ids are stable. The status column compares the current reading only; THESIS.md also requires 'sustained' weakening (60 consecutive days) for S1, S4 and S7, which the page does not compute.",
   "signals": [
     {
       "id": "S1",
-      "label": "v1.signer activity versus its peak",
-      "metric": "signer_txs 30-day average divided by its peak 30-day average (peak 2026-05-16)",
-      "unit": "fraction of peak",
-      "threshold": null,
-      "supports_if": null,
-      "note": "Threshold pending. Counts every transaction touching v1.signer, including MPC node respond calls (about half of the sampled hour)."
+      "label": "v1.signer activity",
+      "metric": "signer_txs 30-day average (all transactions touching v1.signer)",
+      "unit": "transactions per day",
+      "strengthens_at": 64367,
+      "weakens_at": 15000,
+      "note": "Strengthens at a new high above the 2026-05-16 peak; weakens below 15,000 sustained. About half are MPC node respond calls."
     },
     {
       "id": "S2",
       "label": "Breadth of signing callers",
       "metric": "median distinct sign callers per sampled hour, last 30 days of samples",
       "unit": "callers per hour",
-      "threshold": null,
-      "supports_if": null,
-      "note": "Threshold pending. Lower bound per hour from the 12:00-12:59 UTC sample; do not scale to per-day counts."
+      "strengthens_at": 30,
+      "weakens_at": 10,
+      "note": "Lower bound per hour from the 12:00-12:59 UTC sample; do not scale to per-day counts."
     },
     {
       "id": "S3",
-      "label": "Bridge and connector share of sign calls",
-      "metric": "share of sign calls whose caller is omni.bridge.near, any *.bridge.near or any *connector* account, last 30 days of samples (fast-auth.near share shown for contrast)",
+      "label": "Cross-chain share of sign calls",
+      "metric": "share of sign calls whose caller is omni.bridge.near, any *.bridge.near or any *connector* account, last 30 days of samples (fast-auth.near shown for contrast)",
       "unit": "share of sign calls",
-      "threshold": null,
-      "supports_if": null,
-      "note": "Threshold pending. A rising bridge share would mean signing is driven by cross-chain infrastructure rather than NEAR-native fast-auth."
+      "strengthens_at": 0.7,
+      "weakens_at": 0.35,
+      "note": "About 28% in early August 2026, about 58% in the last 30 days. Back at 35% or less would mean signing is mainly NEAR-native account management."
     },
     {
       "id": "S4",
       "label": "Intents volume",
       "metric": "intents_volume_usd 30-day average (DefiLlama)",
       "unit": "USD per day",
-      "threshold": null,
-      "supports_if": null,
-      "note": "Threshold pending. Volume definition is DefiLlama's."
+      "strengthens_at": 250000000,
+      "weakens_at": 65000000,
+      "note": "Weakening threshold must hold for 60 consecutive days. Volume definition is DefiLlama's."
     },
     {
       "id": "S5",
       "label": "NEAR L1 fees",
       "metric": "near_fees_usd_nearblocks 30-day average",
       "unit": "USD per day",
-      "threshold": null,
-      "supports_if": null,
-      "note": "Threshold pending. The 30-day average is currently lifted by a few October 2026 spike days; see the Classic L1 section."
+      "strengthens_at": 20000,
+      "weakens_at": null,
+      "note": "Context for value capture; the thesis does not need L1 fees to grow."
     },
     {
       "id": "S6",
-      "label": "NEAR daily active accounts",
+      "label": "Daily active accounts",
       "metric": "active_accounts 30-day average (Nearblocks)",
       "unit": "accounts per day",
-      "threshold": null,
-      "supports_if": null,
-      "note": "Threshold pending."
+      "strengthens_at": null,
+      "weakens_at": null,
+      "note": "Context only: the thesis expects classic L1 use can keep falling. It counts against the thesis only together with S1 and S4."
     },
     {
       "id": "S7",
       "label": "Intents revenue captured by NEAR",
-      "metric": "intents_revenue_usd 30-day average (DefiLlama dailyRevenue)",
+      "metric": "intents_revenue_usd 30-day average (DefiLlama dailyRevenue; funds NEAR buybacks since 2026-02-23)",
       "unit": "USD per day",
-      "threshold": null,
-      "supports_if": null,
-      "note": "Threshold pending. Net revenue that DefiLlama says funds open-market NEAR buybacks since 2026-02-23; compare with S5 (L1 fees)."
+      "strengthens_at": 150000,
+      "weakens_at": 30000,
+      "note": "150,000 a day is about 0.9% of the 2026-10-31 market cap a year. Weakening must hold for 60 consecutive days."
     }
   ]
 }

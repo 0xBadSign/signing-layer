@@ -413,7 +413,7 @@
     names.forEach(function (a) { allCls[callerClass(a)] += cal[a]; });
     var med2 = median(sdWin.map(function (r) { return r.distinct_sign_callers; }));
     var cur = {
-      S1: { v: sp.latest_30d_avg / sp.peak_30d_avg, text: sharePct(sp.latest_30d_avg / sp.peak_30d_avg) + ' of peak', detail: full(sp.latest_30d_avg) + ' txs/day now versus peak ' + full(sp.peak_30d_avg) + ' on ' + sp.peak_30d_avg_date + ' (' + pct1(sp.latest_vs_peak_pct) + ')' },
+      S1: { v: sp.latest_30d_avg, text: full(sp.latest_30d_avg) + ' txs/day', detail: sharePct(sp.latest_30d_avg / sp.peak_30d_avg) + ' of the peak ' + full(sp.peak_30d_avg) + ' on ' + sp.peak_30d_avg_date + ' (' + pct1(sp.latest_vs_peak_pct) + ')' },
       S2: { v: med2, text: med2 === null ? 'n/a' : String(med2), detail: sdWin.length + ' sampled hours, ' + addDays(sm.last_day, -29) + ' to ' + sm.last_day + '; whole sample median ' + sm.distinct_sign_callers_per_sampled_hour.median + ' (min ' + sm.distinct_sign_callers_per_sampled_hour.min + ', max ' + sm.distinct_sign_callers_per_sampled_hour.max + ')' },
       S3: { v: tot ? cls.bridge / tot : null, text: tot ? sharePct(cls.bridge / tot) + ' bridge / connector' : 'n/a', detail: tot ? 'fast-auth.near ' + sharePct(cls.native / tot) + ', other ' + sharePct(cls.other / tot) + ' (' + full(tot) + ' sign calls in the same 30 days). Whole sample: bridge ' + sharePct(allCls.bridge / calTot) + ', fast-auth ' + sharePct(allCls.native / calTot) : '' },
       S4: { v: S.intents_volume_usd.latest_30d_avg, text: usdFull(S.intents_volume_usd.latest_30d_avg) + '/day', detail: pct1(S.intents_volume_usd.mom_pct) + ' MoM, ' + pct1(S.intents_volume_usd.latest_vs_peak_pct) + ' versus peak ' + usd(S.intents_volume_usd.peak_30d_avg) + ' (' + S.intents_volume_usd.peak_30d_avg_date + ')' },
@@ -423,12 +423,13 @@
     };
     var rows = (D.sig.signals || []).map(function (s) {
       var c = cur[s.id] || { v: null, text: 'n/a', detail: '' };
-      var th = s.threshold, status = 'Threshold pending';
-      if (th !== null && th !== undefined && c.v !== null && s.supports_if) {
-        var ok = s.supports_if === 'above' ? c.v >= th : c.v <= th;
-        status = ok ? 'Supports thesis' : 'Does not support thesis';
+      var up = s.strengthens_at, dn = s.weakens_at, has = function (x) { return x !== null && x !== undefined; };
+      var fmtT = function (x) { return s.unit === 'share of sign calls' ? sharePct(x) : s.unit === 'USD per day' ? usdFull(x) : full(x); };
+      var status = 'Context only';
+      if (c.v !== null && (has(up) || has(dn))) {
+        status = has(up) && c.v >= up ? 'Strengthens' : has(dn) && c.v <= dn ? 'Weakens' : 'Between thresholds';
       }
-      var thText = th === null || th === undefined ? '<span class="na">not set</span>' : esc(String(th)) + (s.supports_if ? ' <span class="na">(supports if ' + esc(s.supports_if) + ')</span>' : '');
+      var thText = (has(up) ? 'strengthens at &ge; ' + esc(fmtT(up)) : '') + (has(up) && has(dn) ? '<br>' : '') + (has(dn) ? 'weakens at &le; ' + esc(fmtT(dn)) : '') + (!has(up) && !has(dn) ? '<span class="na">context only</span>' : '');
       return '<tr><td><b>' + esc(s.id) + '</b></td><td>' + esc(s.label) + '<div class="fine">' + esc(s.metric) + '</div></td><td class="num"><b>' + esc(c.text) + '</b></td><td>' + esc(c.detail) + '</td><td>' + thText + '<div class="fine">' + esc(s.note || '') + '</div></td><td>' + esc(status) + '</td></tr>';
     });
     document.querySelector('#sigtable tbody').innerHTML = rows.join('');
