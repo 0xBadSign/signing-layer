@@ -1,0 +1,61 @@
+{
+ "note": "operational log of fetch runs; not used by build",
+ "runs": [
+  {
+   "started_at": "2026-10-31T11:23:17.882Z",
+   "ended_at": "2026-10-31T11:23:25.639Z",
+   "wall_minutes": 0.1,
+   "args": "--only static",
+   "block_lookups": 0,
+   "stats": {
+    "calls": {
+     "api.nearblocks.io": 1,
+     "api.llama.fi": 4
+    },
+    "status_429": {},
+    "retries": 0,
+    "timeouts": 0,
+    "network_errors": 0,
+    "server_errors": 0
+   }
+  },
+  {
+   "started_at": "2026-10-31T11:23:30.196Z",
+   "ended_at": "2026-10-31T13:03:38.169Z",
+   "wall_minutes": 100.1,
+   "args": "--only counts",
+   "block_lookups": 3758,
+   "stats": {
+    "calls": {
+     "tx.main.fastnear.com": 5450
+    },
+    "status_429": {
+     "tx.main.fastnear.com": 170
+    },
+    "retries": 172,
+    "timeouts": 0,
+    "network_errors": 2,
+    "server_errors": 0
+   }
+  },
+  {
+   "started_at": "2026-10-31T15:16:45.374Z",
+   "ended_at": "2026-10-31T16:05:52.313Z",
+   "wall_minutes": 49.1,
+   "args": "--only sample --sample-step 2",
+   "block_lookups": 149,
+   "stats": {
+    "calls": {
+     "tx.main.fastnear.com": 2670
+    },
+    "status_429": {
+     "tx.main.fastnear.com": 84
+    },
+    "retries": 84,
+    "timeouts": 0,
+    "network_errors": 0,
+    "server_errors": 0
+   }
+  }
+ ]
+}
