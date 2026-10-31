@@ -69,3 +69,7 @@ The operational log of fetch runs (call counts, 429s, wall time) is in `data/raw
 - Whether `verify_foreign_transaction` is live on mainnet is read only from the sample (`verify_foreign_transaction_occurrences`); zero in the sample is not proof of absence.
 - Explorer APIs that need tokens (NEAR Intents explorer, Pikespeak, Dune) were not used.
 - The committed sample covers every second day of the last 90 complete days (45 days, 2026-08-03 to 2026-10-30) to stay within the time budget; `make fetch` uses `--sample-step 1` and fills the other days. One earlier sample run was interrupted and resumed; its operational log entry is missing from `fetch-stats.json`.
+
+## Dashboard
+
+A static page in `web/` (no framework, inline SVG charts) reads `data/derived` and `web/signals.json`. Open it locally with `node scripts/serve.mjs` from the repo root and visit `http://localhost:8765/web/`. `node scripts/build-site.mjs` copies `web/` and `data/derived/` into `site/` (git-ignored); `.github/workflows/pages.yml` runs it and deploys to GitHub Pages once the repo is public. Signal thresholds live in `web/signals.json` (all `null` until set).

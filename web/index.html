@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEAR signing layer dashboard</title>
+<meta name="description" content="Evidence and counter-evidence for NEAR as a signing and settlement layer for other chains.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Is NEAR becoming the signing and settlement layer for other chains, even while classic user activity falls?</h1>
+  <p class="lede">Signing layer: Chain Signatures MPC contract <code>v1.signer</code>. Settlement layer: NEAR Intents <code>intents.near</code>. Counter-evidence (classic L1 activity, how concentrated signing is) is shown with the same weight as the evidence. Every chart names its source series; all numbers come from the files in <code>data/derived</code>.</p>
+  <p class="asof" id="asof">Loading data...</p>
+  <div id="error"></div>
+  <div class="tiles" id="tiles" aria-label="Headline metrics"></div>
+  <p class="fine">Tiles show the latest 30-day average, its change versus the 30-day average ending 364 days earlier (YoY) and versus the previous 30 days (MoM). Green and red only mark the sign of the change, not whether it is good for the thesis. YoY percentages on small or spiky bases can be very large; the base value is printed next to them.</p>
+</header>
+
+<main>
+  <section id="signing">
+    <h2>Signing layer <small id="stamp-signing"></small></h2>
+    <p class="cap"><b>Daily transactions touching v1.signer</b> with 30-day average and the peak of that average. Source: <code>daily.csv</code> <code>signer_txs</code>, <code>rolling30.csv</code> <code>signer_txs_30d</code>.</p>
+    <figure><div class="chart" id="ch-signer"></div></figure>
+    <p class="note" id="signer-note"></p>
+    <p class="cap"><b>What the sampled hour contains</b>: share of decoded transactions whose first external call to <code>v1.signer</code> is <code>sign</code> (user or contract request) versus <code>respond</code> (MPC node answer). Source: <code>sample_daily.csv</code> <code>sign_share</code>, <code>respond_share</code> (12:00-12:59 UTC, every second day).</p>
+    <figure><div class="chart" id="ch-shares"></div></figure>
+  </section>
+
+  <section id="settlement">
+    <h2>Settlement layer <small id="stamp-settlement"></small></h2>
+    <p class="cap"><b>NEAR Intents daily volume in USD</b> with 30-day average. Source: <code>daily.csv</code> <code>intents_volume_usd</code>, <code>rolling30.csv</code> <code>intents_volume_usd_30d</code> (DefiLlama; starts 2024-12-10, earlier days are missing, not zero).</p>
+    <figure><div class="chart" id="ch-vol"></div></figure>
+    <p class="cap"><b>NEAR Intents daily fees in USD</b> (DefiLlama gross fees; starts 2025-05-10). Source: <code>intents_fees_usd</code>, <code>intents_fees_usd_30d</code>.</p>
+    <figure><div class="chart" id="ch-ifees"></div></figure>
+    <p class="cap"><b>NEAR's net Intents revenue in USD per day</b> (DefiLlama <code>dailyRevenue</code>: the part of Intents fees captured by NEAR; per DefiLlama it funds open-market NEAR buybacks since 2026-02-23). Source: <code>intents_revenue_usd</code>, <code>intents_revenue_usd_30d</code>; starts 2025-05-10 and is near zero until late 2025.</p>
+    <figure><div class="chart" id="ch-rev"></div></figure>
+    <p class="cap"><b>Transactions touching intents.near per day.</b> Source: <code>intents_txs</code>, <code>intents_txs_30d</code> (FastNEAR). This series is spiky and a weaker signal than volume; causes of single-day jumps were not investigated.</p>
+    <figure><div class="chart" id="ch-itx"></div></figure>
+  </section>
+
+  <section id="capture">
+    <h2>Value capture <small id="stamp-capture"></small></h2>
+    <p class="cap"><b>Intents revenue captured by NEAR versus NEAR L1 fees</b>, USD per month, since 2025-05. Source: <code>monthly.csv</code> <code>intents_revenue_usd</code>, <code>near_fees_usd_nearblocks</code>. Revenue definition is DefiLlama's; L1 fees are Nearblocks'.</p>
+    <figure><div class="chart" id="ch-capture"></div></figure>
+    <p class="note" id="capture-note"></p>
+  </section>
+
+  <section id="classic">
+    <h2>Classic L1 activity (counter-evidence) <small id="stamp-classic"></small></h2>
+    <div class="grid2">
+      <div>
+        <p class="cap"><b>NEAR transactions per day</b>, whole chain. Source: <code>near_txns</code>, <code>near_txns_30d</code> (Nearblocks).</p>
+        <figure><div class="chart" id="ch-txns"></div></figure>
+      </div>
+      <div>
+        <p class="cap"><b>Daily active accounts.</b> Source: <code>active_accounts</code>, <code>active_accounts_30d</code> (Nearblocks).</p>
+        <figure><div class="chart" id="ch-active"></div></figure>
+      </div>
+      <div>
+        <p class="cap"><b>New accounts per day.</b> Source: <code>new_accounts</code>, <code>new_accounts_30d</code> (Nearblocks).</p>
+        <figure><div class="chart" id="ch-new"></div></figure>
+      </div>
+      <div>
+        <p class="cap"><b>NEAR L1 fees in USD per day</b>, two independent providers overlaid (30-day averages; they agree within <span id="fee-agree">about 0.1%</span> median per day). Source: <code>near_fees_usd_nearblocks</code>, <code>near_fees_usd_defillama</code>.</p>
+        <figure><div class="chart" id="ch-fees"></div></figure>
+      </div>
+    </div>
+    <p class="note" id="classic-note"></p>
+  </section>
+
+  <section id="who">
+    <h2>Who signs <small id="stamp-who"></small></h2>
+    <p class="note" id="sample-caveat"></p>
+    <div class="grid2">
+      <div>
+        <p class="cap"><b>First external call to v1.signer, share of decoded transactions.</b> Source: <code>metrics.json</code> <code>sample.primary_v1_signer_method_mix</code>.</p>
+        <div class="bars" id="bars-method"></div>
+      </div>
+      <div>
+        <p class="cap"><b>Signature domain of sign calls.</b> <code>legacy_key_version_N</code> = older argument format with no <code>domain_id</code>. Source: <code>sample_domains.csv</code>, summed.</p>
+        <div class="bars" id="bars-domain"></div>
+      </div>
+    </div>
+    <p class="cap" style="margin-top:14px"><b>Top callers of sign</b> (predecessor account of the sign call), whole sample. Source: <code>sample_callers.csv</code> role <code>sign_caller_predecessor</code>, summed.</p>
+    <div class="bars" id="bars-callers"></div>
+    <p class="cap" style="margin-top:14px"><b>Distinct sign callers per sampled hour over time.</b> A lower bound per hour; not a count of users. Source: <code>sample_daily.csv</code> <code>distinct_sign_callers</code>.</p>
+    <figure><div class="chart" id="ch-callers"></div></figure>
+  </section>
+
+  <section id="signals">
+    <h2>Signals to watch <small id="stamp-signals"></small></h2>
+    <p class="cap">Current values are computed in the browser from the derived files. Thresholds come from <code>web/signals.json</code>; a blank threshold means it has not been set yet. Ids are stable (S1 to S6).</p>
+    <div class="tbl"><table id="sigtable"><thead><tr><th>Id</th><th>Signal</th><th>Current value</th><th>Detail</th><th>Threshold</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+  </section>
+</main>
+
+<footer>
+  <h3>How to rerun</h3>
+  <pre>make fetch     # network, incremental, resumable (about 2-3 hours from scratch)
+make rebuild   # offline, rewrites data/derived from data/raw
+make test      # node --test, rebuilds into a temp dir and compares byte-for-byte</pre>
+  <p>Open this page locally with <code>node scripts/serve.mjs</code> from the repo root, then visit <code>http://localhost:8765/web/</code>.</p>
+
+  <h3>Sources</h3>
+  <ul>
+    <li><a href="https://tx.main.fastnear.com">FastNEAR transactions API</a> (<code>/v0/account</code>, <code>/v0/block</code>, <code>/v0/transactions</code>): <code>v1.signer</code> and <code>intents.near</code> daily counts, sampled method mix.</li>
+    <li><a href="https://api.nearblocks.io">Nearblocks API</a> (<code>/v1/charts</code>): NEAR transactions, active and new accounts, fees, price.</li>
+    <li><a href="https://api.llama.fi">DefiLlama API</a>: <code>summary/dexs/near-intents</code>, <code>summary/fees/near-intents</code>, <code>summary/fees/near</code>, <code>protocol/near-intents</code>.</li>
+  </ul>
+
+  <h3>Limitations</h3>
+  <ul>
+    <li><code>signer_txs</code> is transactions touching <code>v1.signer</code>, not user signature requests; node <code>respond</code> calls and housekeeping are included. Use the sample method mix to read the split, and remember it is one hour per day.</li>
+    <li><code>intents_txs</code> is highly volatile (single days several times above or below the neighbours). Causes were not investigated (bot or batch activity cannot be ruled out); treat transaction counts as weaker evidence than DefiLlama volume.</li>
+    <li>DefiLlama volume and fee definitions (what counts as an Intents swap, gross versus net fees) are the provider's; they are not re-derived here.</li>
+    <li>Nearblocks <code>multichain_txns</code> is zero on every row and is not used. No keyless source gives the destination chain of a signature; only <code>domain_id</code> and the calling contract are visible.</li>
+    <li>Intents TVL history is only about one year.</li>
+    <li>Block-count differences above 2% between FastNEAR and Nearblocks occur on a few days where both providers show a dip in blocks; see <code>metrics.json</code>.</li>
+    <li>Nearblocks and DefiLlama NEAR fees agree closely in total, but not day by day; the disagreement is recorded in <code>metrics.json</code> (<code>near_fees_cross_check</code>).</li>
+    <li>Whether <code>verify_foreign_transaction</code> is live on mainnet is read only from the sample (<code>verify_foreign_transaction_occurrences</code>); zero in the sample is not proof of absence.</li>
+    <li>Explorer APIs that need tokens (NEAR Intents explorer, Pikespeak, Dune) were not used.</li>
+    <li>The committed sample covers every second day of the last 90 complete days (45 days, 2026-08-03 to 2026-10-30) to stay within the time budget; <code>make fetch</code> uses <code>--sample-step 1</code> and fills the other days. One earlier sample run was interrupted and resumed; its operational log entry is missing from <code>fetch-stats.json</code>.</li>
+  </ul>
+  <p class="fine" id="prov"></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
