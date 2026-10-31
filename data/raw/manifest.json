@@ -22464,6 +22464,14 @@
    "fetched_at": "2026-10-31T11:23:17.885Z",
    "sha256": "13e621301fdda89e138a185cd5a2bf8e0ad9236de0f7b4160744c6c6d0b426b1",
    "bytes": 1535267
+  },
+  "nearblocks/stats.json": {
+   "url": "https://api.nearblocks.io/v1/stats",
+   "method": "GET",
+   "body": null,
+   "fetched_at": "2026-10-31T16:10:54.431Z",
+   "sha256": "fb280e851dd66b285d61594aee478022ffc248609df496a806d8ee00d282735c",
+   "bytes": 478
   }
  }
 }

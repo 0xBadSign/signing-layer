@@ -41,6 +41,8 @@ const log = (...a) => console.log(`[${((Date.now() - t0) / 60000).toFixed(1)}m]`
 // ---------------------------------------------------------------- static sources
 const STATIC = [
   ['nearblocks/charts.json', 'https://api.nearblocks.io/v1/charts'],
+  // Point-in-time supply, price and market cap (used only for the value-capture ratios).
+  ['nearblocks/stats.json', 'https://api.nearblocks.io/v1/stats'],
   ['defillama/dexs_near-intents.json', 'https://api.llama.fi/summary/dexs/near-intents'],
   ['defillama/fees_near-intents.json', 'https://api.llama.fi/summary/fees/near-intents'],
   ['defillama/fees_near.json', 'https://api.llama.fi/summary/fees/near'],

@@ -18,6 +18,10 @@
       "fetched_at": "2026-10-31T11:23:19.225Z",
       "sha256": "cbd4c55ada7ea945ead4670a74183f8969aade408d931dbcd30dd8c8ef1a4437"
     },
+    "defillama/revenue_near-intents.json": {
+      "fetched_at": "2026-10-31T16:08:46.115Z",
+      "sha256": "09c7bdcc4f40dc25fc5ad48a895c50a538a4e1b4c55f1324686dbd1f4fb11faf"
+    },
     "defillama/fees_near.json": {
       "fetched_at": "2026-10-31T11:23:21.085Z",
       "sha256": "9b62d7a46376a2d97a29ce364a139f3acc4ac40b58270ee5f4daba277281079d"
@@ -25,6 +29,10 @@
     "defillama/protocol_near-intents.json": {
       "fetched_at": "2026-10-31T11:23:23.121Z",
       "sha256": "a6e1d7bdba06824c1ccf5f68fa0647df7566c5d09b147bc9c1d6d14d29e2ee70"
+    },
+    "nearblocks/stats.json": {
+      "fetched_at": "2026-10-31T16:10:54.431Z",
+      "sha256": "fb280e851dd66b285d61594aee478022ffc248609df496a806d8ee00d282735c"
     },
     "fastnear/boundaries.json": {
       "fetched_at": "2026-10-31T16:03:24.291Z",
@@ -776,5 +784,24 @@
         "median_distinct_sign_callers_per_hour": 17
       }
     }
+  },
+  "value_capture": {
+    "source": [
+      "nearblocks/stats.json",
+      "defillama/revenue_near-intents.json",
+      "nearblocks/charts.json"
+    ],
+    "snapshot_fetched_at": "2026-10-31T16:10:54.431Z",
+    "near_price_usd": 4.48,
+    "market_cap_usd": 5870575680,
+    "circulating_supply_near": 1249836992.16,
+    "total_supply_near": 1310446823.38,
+    "intents_revenue_30d_avg_usd_per_day": 71500.53,
+    "intents_revenue_annualized_usd": 26097693.45,
+    "buyback_yield_annualized_pct": 0.44,
+    "l1_fees_annualized_usd": 2350154.7,
+    "l1_fee_yield_annualized_pct": 0.04,
+    "intents_revenue_over_l1_fees": 11.1,
+    "method": "Annualized = latest 30-day average x 365. Yield = annualized USD / market cap snapshot (Nearblocks /v1/stats market_cap, a point-in-time value; the 30-day revenue and the snapshot are from different moments). Protocol token issuance (staking inflation) is not measured here, so these are gross, not net, figures."
   }
 }

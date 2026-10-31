@@ -73,6 +73,23 @@
     "network_errors": 0,
     "server_errors": 0
    }
+  },
+  {
+   "started_at": "2026-10-31T16:10:54.427Z",
+   "ended_at": "2026-10-31T16:10:54.855Z",
+   "wall_minutes": 0,
+   "args": "--only static",
+   "block_lookups": 0,
+   "stats": {
+    "calls": {
+     "api.nearblocks.io": 1
+    },
+    "status_429": {},
+    "retries": 0,
+    "timeouts": 0,
+    "network_errors": 0,
+    "server_errors": 0
+   }
   }
  ]
 }
