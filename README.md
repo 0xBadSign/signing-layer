@@ -74,4 +74,8 @@ The operational log of fetch runs (call counts, 429s, wall time) is in `data/raw
 
 ## Dashboard
 
-A static page in `web/` (no framework, inline SVG charts) reads `data/derived` and `web/signals.json`. Open it locally with `node scripts/serve.mjs` from the repo root and visit `http://localhost:8765/web/`. `node scripts/build-site.mjs` copies `web/` and `data/derived/` into `site/` (git-ignored); `.github/workflows/pages.yml` runs it and deploys to GitHub Pages once the repo is public. Signal thresholds live in `web/signals.json` (all `null` until set).
+A static page in `web/` (no framework, inline SVG charts) reads `data/derived` and `web/signals.json`. Open it locally with `node scripts/serve.mjs` from the repo root and visit `http://localhost:8765/web/`. `node scripts/build-site.mjs` copies `web/` and `data/derived/` into `site/` (git-ignored); `.github/workflows/pages.yml` runs it and deploys to GitHub Pages once the repo is public. Signal thresholds live in `web/signals.json` and match section 5 of THESIS.md; the page marks each signal as strengthening, weakening, between thresholds or context only.
+
+## License
+
+Code (`scripts/`, `web/`, `test/`) is MIT, see `LICENSE`. `THESIS.md` and the derived data in `data/derived/` are CC BY 4.0. Raw responses in `data/raw/` belong to their providers (FastNEAR, Nearblocks, DefiLlama) and are kept only so the build can be reproduced offline.
