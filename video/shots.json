@@ -1,0 +1,286 @@
+{
+  "port": 8782,
+  "chromePort": 9332,
+  "scale": 1.5,
+  "scrollOffset": 24,
+  "ready": "document.getElementById('asof') && !document.getElementById('asof').textContent.startsWith('Loading') && document.querySelectorAll('#tiles > *').length >= 4 && document.querySelectorAll('#ch-signer svg, #ch-signer canvas').length > 0 && document.querySelector('#sigtable tbody tr')",
+  "badText": [
+    "Loading data",
+    "Could not",
+    "Error",
+    "failed to"
+  ],
+  "scenes": [
+    {
+      "id": "title-card",
+      "card": {
+        "kicker": "Investment thesis, long term (3 to 5 years)",
+        "title": "Is NEAR becoming the signing and settlement layer for other chains?",
+        "sub": "Even while classic user activity on NEAR falls. Chain Signatures (v1.signer) and NEAR Intents (intents.near).",
+        "accent": "#58a6ff",
+        "footer": "signing-layer  |  THESIS.md"
+      }
+    },
+    {
+      "id": "tiles",
+      "url": "/web/",
+      "steps": [
+        {
+          "mark": "#tiles > :nth-child(1)"
+        },
+        {
+          "hold": 3.5
+        },
+        {
+          "unmark": true
+        },
+        {
+          "mark": "#tiles > :nth-child(2)"
+        },
+        {
+          "hold": 3.5
+        },
+        {
+          "unmark": true
+        },
+        {
+          "hold": 1
+        }
+      ]
+    },
+    {
+      "id": "signing",
+      "url": "/web/",
+      "steps": [
+        {
+          "scroll": {
+            "to": "#signing",
+            "s": 1.6
+          }
+        },
+        {
+          "hold": 9
+        }
+      ]
+    },
+    {
+      "id": "who",
+      "url": "/web/",
+      "steps": [
+        {
+          "scroll": {
+            "to": "#bars-callers",
+            "s": 1.8,
+            "offset": 330
+          }
+        },
+        {
+          "mark": "#bars-callers"
+        },
+        {
+          "hold": 8
+        },
+        {
+          "unmark": true
+        }
+      ]
+    },
+    {
+      "id": "signals-s3",
+      "url": "/web/",
+      "steps": [
+        {
+          "scroll": {
+            "to": "#sigtable",
+            "s": 1.8,
+            "offset": 120
+          }
+        },
+        {
+          "mark": "#sigtable tbody tr:nth-child(3)"
+        },
+        {
+          "hold": 7
+        },
+        {
+          "unmark": true
+        }
+      ]
+    },
+    {
+      "id": "settlement",
+      "url": "/web/",
+      "steps": [
+        {
+          "scroll": {
+            "to": "#settlement",
+            "s": 1.6
+          }
+        },
+        {
+          "hold": 8
+        }
+      ]
+    },
+    {
+      "id": "capture",
+      "url": "/web/",
+      "steps": [
+        {
+          "scroll": {
+            "to": "#capture",
+            "s": 1.6
+          }
+        },
+        {
+          "hold": 9
+        }
+      ]
+    },
+    {
+      "id": "classic",
+      "url": "/web/",
+      "steps": [
+        {
+          "scroll": {
+            "to": "#classic",
+            "s": 1.6
+          }
+        },
+        {
+          "mark": "#ch-active"
+        },
+        {
+          "hold": 9
+        },
+        {
+          "unmark": true
+        }
+      ]
+    },
+    {
+      "id": "signals",
+      "url": "/web/",
+      "steps": [
+        {
+          "scroll": {
+            "to": "#signals",
+            "s": 1.6
+          }
+        },
+        {
+          "hold": 5
+        },
+        {
+          "scroll": {
+            "to": "#sigtable",
+            "s": 2,
+            "offset": 160
+          }
+        },
+        {
+          "hold": 8
+        }
+      ]
+    },
+    {
+      "id": "end-card",
+      "card": {
+        "kicker": "Position: constructive on NEAR as infrastructure",
+        "title": "Real, early, thinly captured",
+        "sub": "A thesis, not a verdict. Every number is rebuilt from public data with make fetch and make rebuild.",
+        "lines": [
+          {
+            "mark": "tick",
+            "text": "Signing and Intents are growing"
+          },
+          {
+            "mark": "no",
+            "text": "Classic L1 activity is falling and value capture is small"
+          },
+          {
+            "mark": "tick",
+            "text": "Seven signals with thresholds say when it is wrong"
+          }
+        ],
+        "accent": "#58a6ff",
+        "footer": "signing-layer  |  Investment Thesis track"
+      }
+    }
+  ],
+  "cuts": {
+    "signing-layer-75s": {
+      "title": "signing-layer, dashboard walk-through",
+      "out": "signing-layer-75s.mp4",
+      "entries": [
+        {
+          "scene": "title-card",
+          "to": 6,
+          "caption": "Is NEAR becoming the signing and settlement layer for other chains?"
+        },
+        {
+          "scene": "tiles",
+          "caption": [
+            {
+              "at": 0,
+              "text": "The position: constructive on NEAR, as infrastructure that other chains use."
+            },
+            {
+              "at": 4.8,
+              "text": "A thesis, not a verdict."
+            }
+          ]
+        },
+        {
+          "scene": "signing",
+          "to": 9,
+          "caption": "Signing: transactions touching v1.signer grew about 7x in a year, to 29,556 a day, but are down 54% from the May peak."
+        },
+        {
+          "scene": "who",
+          "to": 7,
+          "caption": "Bridge and connector contracts are the cross-chain callers. Five callers make about 97% of sign calls."
+        },
+        {
+          "scene": "signals-s3",
+          "to": 7.5,
+          "caption": "The cross-chain share of sign calls rose from about 28% in early August to about 58% in the last 30 days."
+        },
+        {
+          "scene": "settlement",
+          "to": 7,
+          "caption": "Settlement: NEAR Intents moves about $130 million a day, up 134% in a year."
+        },
+        {
+          "scene": "capture",
+          "to": 9,
+          "caption": "Value capture: Intents revenue captured by NEAR is 11 times NEAR's L1 fees. Real, but small: about 0.44% of market cap a year."
+        },
+        {
+          "scene": "classic",
+          "to": 7,
+          "caption": "Counter-evidence, with the same weight: daily active accounts are down 73% in a year."
+        },
+        {
+          "scene": "signals",
+          "to": 12,
+          "caption": [
+            {
+              "at": 0,
+              "text": "What would change my mind: seven signals, each with a threshold."
+            },
+            {
+              "at": 6.6,
+              "text": "If signing and Intents volume both weaken, the thesis is wrong."
+            }
+          ]
+        },
+        {
+          "scene": "end-card",
+          "to": 6,
+          "caption": "Real, early, thinly captured. Re-check on 2027-04-30."
+        }
+      ]
+    }
+  }
+}
