@@ -287,6 +287,18 @@
       tileHtml('NEAR daily active accounts', S.active_accounts, full)
     ].join('');
 
+    var mo3 = [['v1.signer transactions', S.signer_txs], ['Intents volume', S.intents_volume_usd], ['Intents gross fees', S.intents_fees_usd], ['captured Intents revenue', S.intents_revenue_usd], ['intents.near transactions', S.intents_txs]];
+    // captured revenue's year-earlier window can hold revenue on only a day or two; its YoY is then not meaningful
+    var yb = D.daily.filter(function (r) { var t = ms(r.date), e = ms(end); return t > e - 394 * 864e5 && t <= e - 364 * 864e5; });
+    var ybRev = yb.filter(function (r) { return r.intents_revenue_usd > 0; });
+    function momList(k) {
+      return mo3.map(function (x) {
+        if (k === 'yoy_pct' && x[1] === S.intents_revenue_usd && ybRev.length < 10) return x[0] + ' not meaningful (the year-earlier window has revenue on ' + ybRev.length + ' of ' + yb.length + ' days' + (ybRev.length ? ': ' + ybRev.map(function (r) { return r.date; }).join(', ') : '') + ')';
+        return x[0] + ' ' + pct1(x[1][k]);
+      }).join(', ');
+    }
+    $('momentum').innerHTML = '<b>Recent momentum versus the year:</b> 30 days to ' + esc(end) + ' against the 30 days before: ' + esc(momList('mom_pct')) + '. Against the 30 days ending 364 days earlier: ' + esc(momList('yoy_pct')) + '. The year-over-year growth and the weaker last month are both in the data (THESIS.md section 2.4).';
+
     // b. signing
     var sp = S.signer_txs;
     addChart('ch-signer', {
@@ -358,15 +370,15 @@
       ]
     });
     var cc = m.near_fees_cross_check;
-    if (cc && cc.median_rel_diff_pct !== null) $('fee-agree').textContent = Math.abs(cc.median_rel_diff_pct) + '% (' + cc.days_compared + ' days; p90 of daily gaps ' + cc.p90_abs_rel_diff_pct + '%, max ' + cc.max_abs_rel_diff_pct + '%)';
+    if (cc && cc.median_abs_rel_diff_pct !== null && cc.median_abs_rel_diff_pct !== undefined) $('fee-agree').textContent = 'totals agree (ratio ' + cc.total_ratio_nearblocks_over_defillama + ' over ' + cc.days_compared + ' days), daily values do not: median daily gap ' + cc.median_abs_rel_diff_pct + '%, p90 ' + cc.p90_abs_rel_diff_pct + '%, max ' + cc.max_abs_rel_diff_pct + '%';
     var aa = S.active_accounts, firstRoll = D.roll[0];
     var last30 = D.daily.slice(-30).slice().sort(function (a, b) { return b.near_fees_usd_nearblocks - a.near_fees_usd_nearblocks; }).slice(0, 3);
     var med30 = median(D.daily.slice(-30).map(function (r) { return r.near_fees_usd_nearblocks; }));
     $('classic-note').innerHTML = 'Counter-evidence in numbers: the 30-day average of daily active accounts was ' + full(firstRoll.active_accounts_30d) + ' on ' + firstRoll.date + ' and is ' + full(aa.latest_30d_avg) + ' on ' + end + ' (' + pct1(aa.latest_vs_peak_pct) + ' versus its peak). NEAR transactions per day: ' + compact(S.near_txns.avg_30d_ending_364d_earlier) + ' a year earlier, ' + compact(S.near_txns.latest_30d_avg) + ' now (' + pct1(S.near_txns.yoy_pct) + ' YoY). ' +
-      'The L1 fee 30-day average (' + usdFull(S.near_fees_usd_nearblocks.latest_30d_avg) + '/day, ' + pct1(S.near_fees_usd_nearblocks.mom_pct) + ' MoM) is lifted by a few spike days (' + last30.map(function (r) { return r.date + ' ' + usdFull(r.near_fees_usd_nearblocks); }).join(', ') + '); the median day of the last 30 is ' + usdFull(med30) + '. Read the MoM tile with that in mind. Data oddity: NEAR transactions and L1 fees both fall about 75% in one step between 2026-04-01 and 2026-04-02 (transactions 3.76M to 1.06M, fees $2,332 to $884) while active accounts do not move, which looks like a protocol or counting change rather than a collapse in users; the cause was not investigated, so year-over-year transaction and fee comparisons across that date are weaker evidence.';
+      'The L1 fee 30-day average (' + usdFull(S.near_fees_usd_nearblocks.latest_30d_avg) + '/day, ' + pct1(S.near_fees_usd_nearblocks.mom_pct) + ' MoM) is lifted by a few spike days (' + last30.map(function (r) { return r.date + ' ' + usdFull(r.near_fees_usd_nearblocks); }).join(', ') + '); the median day of the last 30 is ' + usdFull(med30) + '. Read the MoM tile with that in mind. Data oddity: NEAR transactions and L1 fees fall about 72% and 62% in one step between 2026-04-01 and 2026-04-02 (transactions 3.76M to 1.06M, fees $2,332 to $884) while active accounts do not move, which looks like a protocol or counting change rather than a collapse in users; the cause was not investigated, so year-over-year transaction and fee comparisons across that date are weaker evidence.';
 
     // e. who signs
-    $('sample-caveat').innerHTML = 'Sampling caveat: one fixed UTC hour (' + esc(sm.window_utc) + '), every second day, last 90 complete days (' + sm.sampled_days + ' days, ' + esc(sm.first_day) + ' to ' + esc(sm.last_day) + ', ' + full(sm.total_decoded_txs) + ' decoded transactions). Shares describe that hour only and single large callers can bias them. Distinct callers are lower bounds per hour; do not scale them to a day.';
+    $('sample-caveat').innerHTML = 'Sampling caveat: one fixed UTC hour (' + esc(sm.window_utc) + ') per sampled day, ' + sm.sampled_days + ' sampled days between ' + esc(sm.first_day) + ' and ' + esc(sm.last_day) + ' (the dates are in sample_daily.csv), ' + full(sm.total_decoded_txs) + ' decoded transactions. Shares describe that hour only and single large callers can bias them. Distinct callers are lower bounds per hour; do not scale them to a day.';
     var mixItems = Object.keys(mix).slice(0, 8).map(function (k) { return { name: k, share: mix[k].share, label: sharePct(mix[k].share) + ' (' + full(mix[k].count) + ')' }; });
     bars('bars-method', mixItems);
 
@@ -401,7 +413,7 @@
       ], yFmt: usd
     }, drawGroups);
     stamp('stamp-capture', end);
-    $('capture-note').innerHTML = '30-day averages to ' + esc(end) + ': Intents revenue to NEAR <b>' + usdFull(ir.latest_30d_avg) + '/day</b> (' + pct1(ir.mom_pct) + ' MoM, ' + pct1(ir.latest_vs_peak_pct) + ' versus peak ' + usdFull(ir.peak_30d_avg) + ' on ' + esc(ir.peak_30d_avg_date) + ') versus L1 fees <b>' + usdFull(nf.latest_30d_avg) + '/day</b>, a ratio of ' + (ir.latest_30d_avg / nf.latest_30d_avg).toFixed(1) + 'x. Revenue is near zero until 2025-11 and is lumpy month to month; the last month in the chart (' + esc(mo[mo.length - 1].month) + ') covers ' + mo[mo.length - 1].days + ' days. Revenue is DefiLlama net revenue (the amount swept to NEAR revenue wallets), a different definition from L1 transaction fees.';
+    $('capture-note').innerHTML = '30-day averages to ' + esc(end) + ': Intents revenue to NEAR <b>' + usdFull(ir.latest_30d_avg) + '/day</b> (' + pct1(ir.mom_pct) + ' MoM, ' + pct1(ir.latest_vs_peak_pct) + ' versus peak ' + usdFull(ir.peak_30d_avg) + ' on ' + esc(ir.peak_30d_avg_date) + ') versus L1 fees <b>' + usdFull(nf.latest_30d_avg) + '/day</b>, a ratio of ' + (ir.latest_30d_avg / nf.latest_30d_avg).toFixed(1) + 'x. Revenue is near zero until 2025-11 and is lumpy month to month; the last month in the chart (' + esc(mo[mo.length - 1].month) + ') covers ' + mo[mo.length - 1].days + ' days. Revenue is DefiLlama net revenue (the amount swept to NEAR revenue wallets), a different definition from L1 transaction fees.' + capSupply(m);
 
     // f. signals
     var cutoff = ms(addDays(sm.last_day, -29));
@@ -433,7 +445,50 @@
       return '<tr><td><b>' + esc(s.id) + '</b></td><td>' + esc(s.label) + '<div class="fine">' + esc(s.metric) + '</div></td><td class="num"><b>' + esc(c.text) + '</b></td><td>' + esc(c.detail) + '</td><td>' + thText + '<div class="fine">' + esc(s.note || '') + '</div></td><td>' + esc(status) + '</td></tr>';
     });
     document.querySelector('#sigtable tbody').innerHTML = rows.join('');
+    sourceLines(D);
     redrawAll();
+  }
+
+  function capSupply(m) {
+    var ns = m.net_supply_growth, vc = m.value_capture;
+    if (!ns || !ns.measured || !vc) return ' Net supply growth: not measured.';
+    return ' Annualized, the revenue is <b>' + vc.buyback_yield_annualized_pct + '%</b> of the market cap snapshot (' + usd(vc.market_cap_usd) + ', ' + esc(vc.snapshot_fetched_at.slice(0, 10)) + '). Net supply growth from ' + esc(ns.from.date) + ' to ' + esc(ns.to.date) + ' (total_supply in block headers): <b>' + ns.net_growth_pct.toFixed(2) + '%</b>, ' + compact(ns.net_change_near) + ' NEAR, ' + usd(vc.net_new_supply_usd_at_snapshot_price) + ' at the snapshot price; the annualized buyback funding is ' + vc.buyback_over_net_new_supply.toFixed(2) + ' of that.';
+  }
+
+  // One small "Source" line under each chart: endpoint and method come from metrics.json (series[key].method, sample.method), derived file and columns from the table below.
+  function firstSentence(t) { var i = String(t).search(/\.\s+(?=[A-Z])/); return i < 0 ? String(t) : String(t).slice(0, i + 1); }
+  function sourceLines(D) {
+    var S = D.m.series;
+    var SRC = [
+      ['ch-signer', ['signer_txs'], 'daily.csv signer_txs; rolling30.csv signer_txs_30d'],
+      ['ch-shares', ['@sample'], 'sample_daily.csv sign_share, respond_share'],
+      ['ch-vol', ['intents_volume_usd'], 'daily.csv intents_volume_usd; rolling30.csv intents_volume_usd_30d'],
+      ['ch-ifees', ['intents_fees_usd'], 'daily.csv intents_fees_usd; rolling30.csv intents_fees_usd_30d'],
+      ['ch-rev', ['intents_revenue_usd'], 'daily.csv intents_revenue_usd; rolling30.csv intents_revenue_usd_30d'],
+      ['ch-itx', ['intents_txs'], 'daily.csv intents_txs; rolling30.csv intents_txs_30d'],
+      ['ch-capture', ['intents_revenue_usd', 'near_fees_usd_nearblocks'], 'monthly.csv intents_revenue_usd, near_fees_usd_nearblocks'],
+      ['ch-txns', ['near_txns'], 'daily.csv near_txns; rolling30.csv near_txns_30d'],
+      ['ch-active', ['active_accounts'], 'daily.csv active_accounts; rolling30.csv active_accounts_30d'],
+      ['ch-new', ['new_accounts'], 'daily.csv new_accounts; rolling30.csv new_accounts_30d'],
+      ['ch-fees', ['near_fees_usd_nearblocks', 'near_fees_usd_defillama'], 'daily.csv near_fees_usd_nearblocks; rolling30.csv near_fees_usd_nearblocks_30d, near_fees_usd_defillama_30d'],
+      ['bars-method', ['@sample'], 'metrics.json sample.primary_v1_signer_method_mix'],
+      ['bars-domain', ['@sample'], 'sample_domains.csv sign_calls by domain'],
+      ['bars-callers', ['@sample'], 'sample_callers.csv count where role = sign_caller_predecessor'],
+      ['ch-callers', ['@sample'], 'sample_daily.csv distinct_sign_callers']
+    ];
+    SRC.forEach(function (r) {
+      var el = $(r[0]);
+      if (!el) return;
+      var how = r[1].map(function (k) {
+        var meta = k === '@sample' ? D.m.sample : S[k];
+        return meta && meta.method ? (k === '@sample' ? 'FastNEAR POST /v0/account and /v0/transactions. ' : '') + firstSentence(meta.method) : '';
+      }).filter(Boolean).join(' ');
+      var host = el.tagName === 'DIV' && el.parentNode.tagName === 'FIGURE' ? el.parentNode : el;
+      var p = document.createElement('p');
+      p.className = 'src';
+      p.innerHTML = '<b>Source:</b> ' + esc(how || 'see metrics.json') + ' Derived: <code>' + esc(r[2]) + '</code>';
+      host.parentNode.insertBefore(p, host.nextSibling);
+    });
   }
 
   run().catch(function (e) {

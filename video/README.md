@@ -6,7 +6,7 @@ Turns the dashboard in `web/` into a finished MP4 with burned-in captions. No np
 node video/make.mjs    # capture every scene, render the cut, write video/voiceover.md
 ```
 
-Requirements: Node 22, Google Chrome (`C:/Program Files/Google/Chrome/Application/chrome.exe`, override with `CHROME_PATH`), ffmpeg and ffprobe on PATH (or `FFMPEG_DIR`). The dashboard reads only the local files in `data/derived`, so no network is needed.
+Requirements: Node 22, Google Chrome (`C:/Program Files/Google/Chrome/Application/chrome.exe`, override with `CHROME_PATH`), ffmpeg and ffprobe on PATH (or `FFMPEG_BIN` / `FFPROBE_BIN` / `FFMPEG_DIR`). The dashboard reads only the local files in `data/derived`, so no network is needed.
 
 ## What it does
 
@@ -22,4 +22,4 @@ Recapture only some scenes: `node video/capture.mjs --scene signing,capture`, th
 
 ## After new data
 
-After `make fetch && make rebuild` the numbers in the captions (29,556 a day, +134%, 11x, 0.44%, 28% to 58%, minus 73%) are written by hand from THESIS.md; update the caption lines in `shots.json` to match `data/derived/metrics.json` before rendering.
+After `make fetch && make rebuild` the numbers in the captions (29,515 a day, 6.4x, +79%, 8% above last November's high, 12 times, 0.51%, 2.48%, 31.5% to 57.3%, minus 79%) are written by hand from THESIS.md; update the caption lines in `shots.json` to match the output of `node scripts/figures.mjs` before rendering. `video/out/signing-layer-75s.mp4` was last rendered on 2026-11-08 from the current captions (1:19).

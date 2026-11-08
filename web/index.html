@@ -15,6 +15,7 @@
   <div id="error"></div>
   <div class="tiles" id="tiles" aria-label="Headline metrics"></div>
   <p class="fine">Tiles show the latest 30-day average, its change versus the 30-day average ending 364 days earlier (YoY) and versus the previous 30 days (MoM). Green and red only mark the sign of the change, not whether it is good for the thesis. YoY percentages on small or spiky bases can be very large; the base value is printed next to them.</p>
+  <p class="note" id="momentum"></p>
 </header>
 
 <main>
@@ -23,7 +24,7 @@
     <p class="cap"><b>Daily transactions touching v1.signer</b> with 30-day average and the peak of that average. Source: <code>daily.csv</code> <code>signer_txs</code>, <code>rolling30.csv</code> <code>signer_txs_30d</code>.</p>
     <figure><div class="chart" id="ch-signer"></div></figure>
     <p class="note" id="signer-note"></p>
-    <p class="cap"><b>What the sampled hour contains</b>: share of decoded transactions whose first external call to <code>v1.signer</code> is <code>sign</code> (user or contract request) versus <code>respond</code> (MPC node answer). Source: <code>sample_daily.csv</code> <code>sign_share</code>, <code>respond_share</code> (12:00-12:59 UTC, every second day).</p>
+    <p class="cap"><b>What the sampled hour contains</b>: share of decoded transactions whose first external call to <code>v1.signer</code> is <code>sign</code> (user or contract request) versus <code>respond</code> (MPC node answer). Source: <code>sample_daily.csv</code> <code>sign_share</code>, <code>respond_share</code> (12:00-12:59 UTC, one hour per sampled day).</p>
     <figure><div class="chart" id="ch-shares"></div></figure>
   </section>
 
@@ -62,7 +63,7 @@
         <figure><div class="chart" id="ch-new"></div></figure>
       </div>
       <div>
-        <p class="cap"><b>NEAR L1 fees in USD per day</b>, two independent providers overlaid (30-day averages; they agree within <span id="fee-agree">about 0.1%</span> median per day). Source: <code>near_fees_usd_nearblocks</code>, <code>near_fees_usd_defillama</code>.</p>
+        <p class="cap"><b>NEAR L1 fees in USD per day</b>, two independent providers overlaid (30-day averages; <span id="fee-agree">totals agree, daily values do not</span>). Source: <code>near_fees_usd_nearblocks</code>, <code>near_fees_usd_defillama</code>.</p>
         <figure><div class="chart" id="ch-fees"></div></figure>
       </div>
     </div>
@@ -90,7 +91,7 @@
 
   <section id="signals">
     <h2>Signals to watch <small id="stamp-signals"></small></h2>
-    <p class="cap">Current values are computed in the browser from the derived files. Thresholds come from <code>web/signals.json</code>; a blank threshold means it has not been set yet. Ids are stable (S1 to S6).</p>
+    <p class="cap">Current values are computed in the browser from the derived files. Thresholds come from <code>web/signals.json</code>; a blank threshold means it has not been set yet. Ids are stable (S1 to S7).</p>
     <div class="tbl"><table id="sigtable"><thead><tr><th>Id</th><th>Signal</th><th>Current value</th><th>Detail</th><th>Threshold</th><th>Status</th></tr></thead><tbody></tbody></table></div>
   </section>
 </main>
@@ -106,7 +107,8 @@ make test      # node --test, rebuilds into a temp dir and compares byte-for-byt
   <ul>
     <li><a href="https://tx.main.fastnear.com">FastNEAR transactions API</a> (<code>/v0/account</code>, <code>/v0/block</code>, <code>/v0/transactions</code>): <code>v1.signer</code> and <code>intents.near</code> daily counts, sampled method mix.</li>
     <li><a href="https://api.nearblocks.io">Nearblocks API</a> (<code>/v1/charts</code>): NEAR transactions, active and new accounts, fees, price.</li>
-    <li><a href="https://api.llama.fi">DefiLlama API</a>: <code>summary/dexs/near-intents</code>, <code>summary/fees/near-intents</code>, <code>summary/fees/near</code>, <code>protocol/near-intents</code>.</li>
+    <li><a href="https://api.llama.fi">DefiLlama API</a>: <code>summary/dexs/near-intents</code>, <code>summary/fees/near-intents</code> (also <code>dataType=dailyRevenue</code>), <code>summary/fees/near</code>, <code>protocol/near-intents</code>.</li>
+    <li>NEAR archival JSON-RPC (<code>archival-rpc.mainnet.fastnear.com</code>, method <code>block</code>): <code>total_supply</code> at two day boundaries 365 days apart, for net supply growth.</li>
   </ul>
 
   <h3>Limitations</h3>
@@ -120,7 +122,9 @@ make test      # node --test, rebuilds into a temp dir and compares byte-for-byt
     <li>Nearblocks and DefiLlama NEAR fees agree closely in total, but not day by day; the disagreement is recorded in <code>metrics.json</code> (<code>near_fees_cross_check</code>).</li>
     <li>Whether <code>verify_foreign_transaction</code> is live on mainnet is read only from the sample (<code>verify_foreign_transaction_occurrences</code>); zero in the sample is not proof of absence.</li>
     <li>Explorer APIs that need tokens (NEAR Intents explorer, Pikespeak, Dune) were not used.</li>
-    <li>The committed sample covers every second day of the last 90 complete days (45 days, 2026-08-03 to 2026-10-30) to stay within the time budget; <code>make fetch</code> uses <code>--sample-step 1</code> and fills the other days. One earlier sample run was interrupted and resumed; its operational log entry is missing from <code>fetch-stats.json</code>.</li>
+    <li>The committed sample has 90 sampled days from 2026-08-03 to 2026-11-06: every day from 2026-08-09 to 2026-10-31, plus every second day at both ends (2026-08-03, 08-05, 08-07 and 2026-11-02, 11-04, 11-06), from two <code>--sample-step 2</code> runs whose day grids are offset by one day. <code>make fetch</code> uses <code>--sample-step 1</code> and fills the remaining days. One earlier sample run was interrupted and resumed; its operational log entry is missing from <code>fetch-stats.json</code>.</li>
+    <li>On 4 of the 546 days with both values (2025-11-07, 2026-01-15, 2026-02-02, 2026-03-27), DefiLlama's captured revenue (<code>intents_revenue_usd</code>) is larger than its gross fees (<code>intents_fees_usd</code>) for the same day; revenue exceeds fees by $459k in total over those days. The cause was not investigated; none of these days is in the last 90 days, but 2025-11-07 is the only day with captured revenue in the year-earlier window, so the year-over-year change of captured revenue is not meaningful.</li>
+    <li>Net supply growth is measured from two block headers, so it is net of burnt fees. Gross issuance, the staker share and the buyback executions themselves are not measured.</li>
   </ul>
   <p class="fine" id="prov"></p>
 </footer>

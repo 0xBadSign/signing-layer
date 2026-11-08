@@ -192,7 +192,7 @@
         "lines": [
           {
             "mark": "tick",
-            "text": "Signing and Intents are growing"
+            "text": "Signing and Intents grew over the year; the last month was weaker"
           },
           {
             "mark": "no",
@@ -234,7 +234,7 @@
         {
           "scene": "signing",
           "to": 9,
-          "caption": "Signing: transactions touching v1.signer grew about 7x in a year, to 29,556 a day, but are down 54% from the May peak."
+          "caption": "Signing: transactions touching v1.signer grew 6.4x in a year, to 29,515 a day, but are down 54% from the May peak."
         },
         {
           "scene": "who",
@@ -244,22 +244,22 @@
         {
           "scene": "signals-s3",
           "to": 7.5,
-          "caption": "The cross-chain share of sign calls rose from about 28% in early August to about 58% in the last 30 days."
+          "caption": "Cross-chain share of sampled sign calls: 31.5% in August, 57.3% in October. Bridge calls stayed about flat; FastAuth calls fell."
         },
         {
           "scene": "settlement",
-          "to": 7,
-          "caption": "Settlement: NEAR Intents moves about $130 million a day, up 134% in a year."
+          "to": 8,
+          "caption": "Intents: about $134 million a day, up 79% in a year but only 8% above last November's high; down 12% on the month."
         },
         {
           "scene": "capture",
           "to": 9,
-          "caption": "Value capture: Intents revenue captured by NEAR is 11 times NEAR's L1 fees. Real, but small: about 0.44% of market cap a year."
+          "caption": "Value capture: Intents revenue to NEAR is about 12 times L1 fees, but only 0.51% of market cap a year, against 2.48% net supply growth."
         },
         {
           "scene": "classic",
           "to": 7,
-          "caption": "Counter-evidence, with the same weight: daily active accounts are down 73% in a year."
+          "caption": "Counter-evidence, with the same weight: daily active accounts are down 79% in a year."
         },
         {
           "scene": "signals",

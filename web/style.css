@@ -72,6 +72,8 @@ code { font: 0.88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; ba
 .na { color: var(--muted); }
 .fine { font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+.src { font-size: 0.76rem; color: var(--muted); margin: -8px 0 14px; overflow-wrap: anywhere; }
+.src b { color: var(--ink); font-weight: 600; }
 figure { margin: 10px 0 14px; padding: 0; }
 .chart { position: relative; width: 100%; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 4px 2px; }
 .chart svg { display: block; width: 100%; height: auto; touch-action: pan-y; }

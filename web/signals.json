@@ -27,7 +27,7 @@
       "unit": "share of sign calls",
       "strengthens_at": 0.7,
       "weakens_at": 0.35,
-      "note": "About 28% in early August 2026, about 58% in the last 30 days. Back at 35% or less would mean signing is mainly NEAR-native account management."
+      "note": "Ratio of sums over all sampled hours in the period: 31.5% in August 2026 and 57.3% in October 2026 (calendar months), 31.8% in the first 30 days of the sample and 58.0% in the last 30 days (sample to 2026-11-06). Back at 35% or less would mean signing is mainly NEAR-native account management. This is a share: the rise from August to October came from fewer fast-auth.near calls, while bridge and connector calls per sampled hour stayed about flat (367 in the first 30 days of the sample, 376 in the last 30), so read it with the absolute counts (node scripts/figures.mjs)."
     },
     {
       "id": "S4",
@@ -63,7 +63,7 @@
       "unit": "USD per day",
       "strengthens_at": 150000,
       "weakens_at": 30000,
-      "note": "150,000 a day is about 0.9% of the 2026-10-31 market cap a year. Weakening must hold for 60 consecutive days."
+      "note": "150,000 a day is about 1.1% of the 2026-11-07 market cap a year. Weakening must hold for 60 consecutive days."
     }
   ]
 }

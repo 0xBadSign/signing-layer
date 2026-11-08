@@ -14,16 +14,12 @@ const cfg = JSON.parse(fs.readFileSync(path.join(HERE, 'shots.json'), 'utf8'));
 const args = process.argv.slice(2);
 const only = args.includes('--cut') ? args[args.indexOf('--cut') + 1].split(',') : null;
 const FPS = 30;
-const WINGET_FFMPEG = 'C:/Users/<user>/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-9.0.2-full_build/bin/';
-
-function tool(name) {
-  for (const cand of [process.env.FFMPEG_DIR ? path.join(process.env.FFMPEG_DIR, name) : null, name, WINGET_FFMPEG + name].filter(Boolean)) {
-    if (spawnSync(cand, ['-version'], { stdio: 'ignore' }).status === 0) return cand;
-  }
-  throw new Error(`${name} not found (set FFMPEG_DIR)`);
+// Override with FFMPEG_BIN / FFPROBE_BIN (full paths) or FFMPEG_DIR; otherwise ffmpeg and ffprobe are taken from PATH.
+const FFMPEG = process.env.FFMPEG_BIN || (process.env.FFMPEG_DIR ? path.join(process.env.FFMPEG_DIR, 'ffmpeg') : 'ffmpeg');
+const FFPROBE = process.env.FFPROBE_BIN || (process.env.FFMPEG_DIR ? path.join(process.env.FFMPEG_DIR, 'ffprobe') : 'ffprobe');
+for (const [n, b] of [['ffmpeg', FFMPEG], ['ffprobe', FFPROBE]]) {
+  if (spawnSync(b, ['-version'], { stdio: 'ignore' }).status !== 0) throw new Error(`${n} not found (set FFMPEG_BIN or FFMPEG_DIR)`);
 }
-const FFMPEG = tool('ffmpeg');
-const FFPROBE = tool('ffprobe');
 
 fs.mkdirSync(OUT, { recursive: true });
 const timelines = {};

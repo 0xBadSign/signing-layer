@@ -5,41 +5,41 @@
    "url": "https://api.llama.fi/summary/dexs/near-intents",
    "method": "GET",
    "body": null,
-   "fetched_at": "2026-10-31T11:23:18.680Z",
-   "sha256": "d2edeb0c13de9cb22555ccaa858f8baa0d2907925ecebe610d80caccf33ca38a",
-   "bytes": 49698
+   "fetched_at": "2026-11-07T23:31:25.793Z",
+   "sha256": "990d56fdbc6833e74fd849b151c92048c48fdf02df25e1d7d6b111d742bea31c",
+   "bytes": 50228
   },
   "defillama/fees_near-intents.json": {
    "url": "https://api.llama.fi/summary/fees/near-intents",
    "method": "GET",
    "body": null,
-   "fetched_at": "2026-10-31T11:23:19.225Z",
-   "sha256": "cbd4c55ada7ea945ead4670a74183f8969aade408d931dbcd30dd8c8ef1a4437",
-   "bytes": 38257
+   "fetched_at": "2026-11-07T23:31:26.138Z",
+   "sha256": "ddeeccfa167e29be6262284a8c805930821ace632ff098fc26c4cdf88a008cc5",
+   "bytes": 38743
   },
   "defillama/fees_near.json": {
    "url": "https://api.llama.fi/summary/fees/near",
    "method": "GET",
    "body": null,
-   "fetched_at": "2026-10-31T11:23:21.085Z",
-   "sha256": "9b62d7a46376a2d97a29ce364a139f3acc4ac40b58270ee5f4daba277281079d",
-   "bytes": 121618
+   "fetched_at": "2026-11-07T23:31:28.051Z",
+   "sha256": "8e6dceb8dbaac92d043890161272c9b41868d9df27cc678481dd9318f5922a17",
+   "bytes": 122023
   },
   "defillama/protocol_near-intents.json": {
    "url": "https://api.llama.fi/protocol/near-intents",
    "method": "GET",
    "body": null,
-   "fetched_at": "2026-10-31T11:23:23.121Z",
-   "sha256": "a6e1d7bdba06824c1ccf5f68fa0647df7566c5d09b147bc9c1d6d14d29e2ee70",
-   "bytes": 3028723
+   "fetched_at": "2026-11-07T23:31:29.923Z",
+   "sha256": "c2420e10a8ccc3296665d3782efafc7c71ccd77bf64cc4c92f255799da857d35",
+   "bytes": 3090107
   },
   "defillama/revenue_near-intents.json": {
    "url": "https://api.llama.fi/summary/fees/near-intents?dataType=dailyRevenue",
    "method": "GET",
    "body": null,
-   "fetched_at": "2026-10-31T16:08:46.115Z",
-   "sha256": "09c7bdcc4f40dc25fc5ad48a895c50a538a4e1b4c55f1324686dbd1f4fb11faf",
-   "bytes": 35859
+   "fetched_at": "2026-11-07T23:31:32.484Z",
+   "sha256": "78c205925899adc91d5c8d4ddc6e98efd182c6970626e174f473f413592a4e5b",
+   "bytes": 36326
   },
   "fastnear/boundaries.json": {
    "url": "https://tx.main.fastnear.com/v0/block",
@@ -47,9 +47,9 @@
    "body": {
     "block_id": "<height probes from binary search; see README>"
    },
-   "fetched_at": "2026-10-31T16:03:24.291Z",
-   "sha256": "45817c8a4a08c8f568a312bbd39cb035079e22fb7c2565e6c5be50ede524e6e0",
-   "bytes": 125224,
+   "fetched_at": "2026-11-08T01:46:34.949Z",
+   "sha256": "140b1a2ff2d129f91f9b910977174382ade091ddd5f4edd305c06582307de428",
+   "bytes": 139483,
    "note": "Cache of exact boundary search results. Key = UTC instant; height = first block with timestamp >= key."
   },
   "fastnear/counts/intents.near/2024-10-01.json": {
@@ -10692,6 +10692,104 @@
    "bytes": 522,
    "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
   },
+  "fastnear/counts/intents.near/2026-10-31.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "intents.near",
+    "limit": 1,
+    "from_tx_block_height": 222343159,
+    "to_tx_block_height": 222491355
+   },
+   "fetched_at": "2026-11-07T23:31:53.848Z",
+   "sha256": "a5aaa1144ae430e833cb2101909306edde5aa5be47ee2083c962ef72ea519f26",
+   "bytes": 524,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/intents.near/2026-11-01.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "intents.near",
+    "limit": 1,
+    "from_tx_block_height": 222491356,
+    "to_tx_block_height": 222641209
+   },
+   "fetched_at": "2026-11-07T23:31:57.766Z",
+   "sha256": "c5a1d54d47ff490c3db8923fd102c73cbac918136cbe9751977442824d5d3b3a",
+   "bytes": 525,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/intents.near/2026-11-02.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "intents.near",
+    "limit": 1,
+    "from_tx_block_height": 222641210,
+    "to_tx_block_height": 222791207
+   },
+   "fetched_at": "2026-11-07T23:32:02.299Z",
+   "sha256": "77773573e7b090f877b02cf238693134c51e0e175434af2ccb7b1cb65e1f5362",
+   "bytes": 520,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/intents.near/2026-11-03.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "intents.near",
+    "limit": 1,
+    "from_tx_block_height": 222791208,
+    "to_tx_block_height": 222942363
+   },
+   "fetched_at": "2026-11-07T23:32:37.068Z",
+   "sha256": "ed4b8fe14e6ee14a80a87271d9785a9799ac0fdb6385c118920a6bede20f5459",
+   "bytes": 517,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/intents.near/2026-11-04.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "intents.near",
+    "limit": 1,
+    "from_tx_block_height": 222942364,
+    "to_tx_block_height": 223088015
+   },
+   "fetched_at": "2026-11-07T23:32:42.264Z",
+   "sha256": "17f8a5f0f9014cb8a9f17be0b6431e5d41f43c676a81375ecae8dfdb184c8882",
+   "bytes": 520,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/intents.near/2026-11-05.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "intents.near",
+    "limit": 1,
+    "from_tx_block_height": 223088016,
+    "to_tx_block_height": 223237988
+   },
+   "fetched_at": "2026-11-07T23:32:48.152Z",
+   "sha256": "851cca7c3a143752844bba97a5bba7b6368c540f52cfde16e4457b2fc08ed21b",
+   "bytes": 525,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/intents.near/2026-11-06.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "intents.near",
+    "limit": 1,
+    "from_tx_block_height": 223237989,
+    "to_tx_block_height": 223387846
+   },
+   "fetched_at": "2026-11-07T23:32:52.013Z",
+   "sha256": "b23345fab75ba3f3971af1451de9f793676998680366e023158ec903f52afacb",
+   "bytes": 519,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
   "fastnear/counts/v1.signer/2024-10-01.json": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21332,6 +21430,104 @@
    "bytes": 519,
    "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
   },
+  "fastnear/counts/v1.signer/2026-10-31.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 1,
+    "from_tx_block_height": 222343159,
+    "to_tx_block_height": 222491355
+   },
+   "fetched_at": "2026-11-07T23:31:53.135Z",
+   "sha256": "f0aa4d19d43c102952d86bb7785b24ec8c4a53ac7285921077734a8d394ce16a",
+   "bytes": 520,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/v1.signer/2026-11-01.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 1,
+    "from_tx_block_height": 222491356,
+    "to_tx_block_height": 222641209
+   },
+   "fetched_at": "2026-11-07T23:31:57.035Z",
+   "sha256": "750f918ad32cb3a2ddc398f15df28ef8c87d885e61e72fcbd8727aa48dbd12dd",
+   "bytes": 520,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/v1.signer/2026-11-02.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 1,
+    "from_tx_block_height": 222641210,
+    "to_tx_block_height": 222791207
+   },
+   "fetched_at": "2026-11-07T23:32:01.578Z",
+   "sha256": "210edcca94d0f11c80f9d93a36c15af01a436069e0996bed75327a0be4949812",
+   "bytes": 520,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/v1.signer/2026-11-03.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 1,
+    "from_tx_block_height": 222791208,
+    "to_tx_block_height": 222942363
+   },
+   "fetched_at": "2026-11-07T23:32:36.492Z",
+   "sha256": "e40053db906a15142cb46483e47b16ae6b6e37fd54de31c61e8a57ae746dbfc4",
+   "bytes": 519,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/v1.signer/2026-11-04.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 1,
+    "from_tx_block_height": 222942364,
+    "to_tx_block_height": 223088015
+   },
+   "fetched_at": "2026-11-07T23:32:41.542Z",
+   "sha256": "3156ab7339ed44617784900a776d52f4727bbb6a778ae3a8b5c071c64ed944c1",
+   "bytes": 520,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/v1.signer/2026-11-05.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 1,
+    "from_tx_block_height": 223088016,
+    "to_tx_block_height": 223237988
+   },
+   "fetched_at": "2026-11-07T23:32:47.393Z",
+   "sha256": "9eeb3f5c8f1ae5ba2fff49f17260d7723d69373d799b81a4d992456954590798",
+   "bytes": 519,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
+  "fastnear/counts/v1.signer/2026-11-06.json": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 1,
+    "from_tx_block_height": 223237989,
+    "to_tx_block_height": 223387846
+   },
+   "fetched_at": "2026-11-07T23:32:51.294Z",
+   "sha256": "5e13f39a04f1209a8a0a1f1ab2f351b0290b6b108b72eda7aa00f165a5b8f3f5",
+   "bytes": 520,
+   "note": "window is [from, to] inclusive; to = first block of next UTC day minus 1"
+  },
   "fastnear/sample/v1.signer/2026-08-03/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21432,6 +21628,31 @@
    "sha256": "9d0768cfa2a62fccdc85109d6a7b7439f8becc1874b3ffd3091422d9421e933a",
    "bytes": 648782
   },
+  "fastnear/sample/v1.signer/2026-08-10/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 210733725,
+    "to_tx_block_height": 210739549,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:46:42.221Z",
+   "sha256": "e2b25dd7eae7ab494684409d342f2301737ee25ae394d651b8176fe5e44207f6",
+   "bytes": 107093,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-10/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:46:42.239Z",
+   "sha256": "12459260efe3bcfd1e5d0e651d378a61c0f0ee0fa9a447be6a305e4f900d65cb",
+   "bytes": 639523
+  },
   "fastnear/sample/v1.signer/2026-08-11/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21456,6 +21677,31 @@
    "fetched_at": "2026-10-31T15:53:46.736Z",
    "sha256": "e202ae2d12bd68eb89820074b700cb27ae9287e4fef261ef3278ddc3af418ad0",
    "bytes": 639446
+  },
+  "fastnear/sample/v1.signer/2026-08-12/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 211013697,
+    "to_tx_block_height": 211019530,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:44:35.824Z",
+   "sha256": "0dcd3a32b0a4b91813bd35250d8f350dd9441071a0a136de4fb23797dd66a2c9",
+   "bytes": 105085,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-12/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:44:35.846Z",
+   "sha256": "eb5b18eb596e3dd99724771cea55d1ab829e111c3057f53e7ed3559d54342291",
+   "bytes": 1235490
   },
   "fastnear/sample/v1.signer/2026-08-13/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21482,6 +21728,31 @@
    "sha256": "25d223d9cdf6f7fac5e8872d6b61caf0e131ec876420d79c6cf2cbc72425f1d3",
    "bytes": 700519
   },
+  "fastnear/sample/v1.signer/2026-08-14/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 211298061,
+    "to_tx_block_height": 211303984,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:41:56.601Z",
+   "sha256": "7a91e192be2e747758eb7c7db11b988fc6983c004706de3a192590a05eb10ce2",
+   "bytes": 109019,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-14/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:41:56.622Z",
+   "sha256": "2b4f24687d7b8b35ef584f908d1262543d5793e1d929976376afc0cbabaeee7d",
+   "bytes": 2548466
+  },
   "fastnear/sample/v1.signer/2026-08-15/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21506,6 +21777,31 @@
    "fetched_at": "2026-10-31T15:49:06.538Z",
    "sha256": "878de128d7f9c2f38d2c170767ade9772b4d4836aac40f5e4096601722478194",
    "bytes": 632688
+  },
+  "fastnear/sample/v1.signer/2026-08-16/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 211577877,
+    "to_tx_block_height": 211583846,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:39:35.229Z",
+   "sha256": "33882b3ab43206e3b9595a07dd9f724fe67db3c19a2580b8941935a833b83ae2",
+   "bytes": 104306,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-16/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:39:35.252Z",
+   "sha256": "ebde781ed2fba19b81d3043f0632590b4724a03fdbe0e5694bc2bea85760c596",
+   "bytes": 674809
   },
   "fastnear/sample/v1.signer/2026-08-17/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21532,6 +21828,31 @@
    "sha256": "f122f2d236ab408f56700a7bbb917aeed25abb0f565b463e872e0125e86ad701",
    "bytes": 823728
   },
+  "fastnear/sample/v1.signer/2026-08-18/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 211862227,
+    "to_tx_block_height": 211868075,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:36:33.731Z",
+   "sha256": "d478e5aa2a4a6a33ad8aff67ae47527939406ecb78d7d7115ff3001758cbb6e6",
+   "bytes": 119475,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-18/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:36:33.755Z",
+   "sha256": "304329349f18e73a70cdd742674503d4a7d88a8d2634ea1e7ceb19b25591d40d",
+   "bytes": 803649
+  },
   "fastnear/sample/v1.signer/2026-08-19/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21556,6 +21877,31 @@
    "fetched_at": "2026-10-31T15:43:42.267Z",
    "sha256": "8c0ace34803807f58256bd98f9bfa25e49d4dcf4a334acadd9b68722203f2278",
    "bytes": 841600
+  },
+  "fastnear/sample/v1.signer/2026-08-20/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 212145627,
+    "to_tx_block_height": 212151545,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:33:33.197Z",
+   "sha256": "2f81efd9ad368e968b2e9e72e7c5ab865f01100377af96335328c0603c8612e9",
+   "bytes": 134960,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-20/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:33:33.224Z",
+   "sha256": "ffb0feb95835a282cb8f4be2597858e997715061adaacd2740cf5446cea0e12d",
+   "bytes": 916604
   },
   "fastnear/sample/v1.signer/2026-08-21/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21582,6 +21928,31 @@
    "sha256": "bc7e03240231d10f158a0300bbf9ae3a756214c5f7f3aca645c681b015c4f6ac",
    "bytes": 972932
   },
+  "fastnear/sample/v1.signer/2026-08-22/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 212424872,
+    "to_tx_block_height": 212430513,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:30:39.046Z",
+   "sha256": "05547501902bb923e1cf38803eace86ea18e081df1fd1ca2c59400839ce8f176",
+   "bytes": 128623,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-22/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:30:39.073Z",
+   "sha256": "ef1b18225cc7cd966fc609cc7c3090f58e65b255f757cc38da7cf47f27fd5d86",
+   "bytes": 894037
+  },
   "fastnear/sample/v1.signer/2026-08-23/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21606,6 +21977,31 @@
    "fetched_at": "2026-10-31T15:37:24.775Z",
    "sha256": "e7ef3a078c3398f46936218f226fcb6169a20c7a41028f08c28b69aef980df1e",
    "bytes": 888646
+  },
+  "fastnear/sample/v1.signer/2026-08-24/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 212707653,
+    "to_tx_block_height": 212713541,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:27:26.855Z",
+   "sha256": "06e377bc01f278c385f866804dc12b999d3bf734943d96f4344a47e8b807f7a7",
+   "bytes": 131640,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-24/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:27:26.884Z",
+   "sha256": "acee2e48d7f88e9330daad6d635f278e35f163163d5431f384ef91551fbaa0f2",
+   "bytes": 893322
   },
   "fastnear/sample/v1.signer/2026-08-25/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21632,6 +22028,31 @@
    "sha256": "a7ed4f6296f19e8c1ed6e07aa6b89b0c02982fb8491baa704586dc794bc8db79",
    "bytes": 898983
   },
+  "fastnear/sample/v1.signer/2026-08-26/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 212991090,
+    "to_tx_block_height": 212997087,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:24:34.599Z",
+   "sha256": "8b426df488adc8a1b23ff98b802405a225355ead7bedcae5354dca21f24fdae0",
+   "bytes": 125262,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-26/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:24:34.626Z",
+   "sha256": "e29118aad2e9ce07918c5d7fb804f3e958e0fa460e6958d33f427a1c61de16a9",
+   "bytes": 865206
+  },
   "fastnear/sample/v1.signer/2026-08-27/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21656,6 +22077,31 @@
    "fetched_at": "2026-10-31T15:31:36.219Z",
    "sha256": "de270b85df0a3972468d7c63f3bfd71d10246329ec5e1360759148ab18d96df3",
    "bytes": 867544
+  },
+  "fastnear/sample/v1.signer/2026-08-28/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 213272153,
+    "to_tx_block_height": 213277975,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:21:37.445Z",
+   "sha256": "09c3f36f94b224a302fe15d9d4a2481e5742533a2111e3e476817a780ee97ee6",
+   "bytes": 110089,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-28/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:21:37.469Z",
+   "sha256": "622b79086bc43475efbdf548920a78b7e2b4c467ecc5836b0ccfa717205a912d",
+   "bytes": 768819
   },
   "fastnear/sample/v1.signer/2026-08-29/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21682,6 +22128,31 @@
    "sha256": "1df4d66c70d7f93b385e9ff61c697ba155cd3d3a2670cce524f1e0dd54365a67",
    "bytes": 746451
   },
+  "fastnear/sample/v1.signer/2026-08-30/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 213552170,
+    "to_tx_block_height": 213557986,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:18:15.576Z",
+   "sha256": "b3755fc9fa6d1740afa4c0e4f8fb3f12ce8f5e07cc8a9fbf85e67380453c9e5e",
+   "bytes": 103788,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-08-30/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:18:15.597Z",
+   "sha256": "b67af35e1b12c68272dfe38e628fbbfb287618d95cda7cb66cf25de9c06b737d",
+   "bytes": 743493
+  },
   "fastnear/sample/v1.signer/2026-08-31/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21706,6 +22177,31 @@
    "fetched_at": "2026-10-31T15:26:35.136Z",
    "sha256": "4f8676132975913cfd5bbdc40e05f214d13a9d54e29b79df1c3f5902d77a76ec",
    "bytes": 755374
+  },
+  "fastnear/sample/v1.signer/2026-09-01/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 213831070,
+    "to_tx_block_height": 213836872,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:15:39.013Z",
+   "sha256": "bcfc69d7e304b1b3281bed5044f5e76291ae869a8df300b5b82090f971257a01",
+   "bytes": 105749,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-01/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:15:39.036Z",
+   "sha256": "192288154e61c3e1ce4c27bd20edb45a111df0f5872a96c337f59e8c43c92750",
+   "bytes": 749487
   },
   "fastnear/sample/v1.signer/2026-09-02/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21732,6 +22228,31 @@
    "sha256": "fe0825439a0396efec55a043e186402653dfe1104343501dd4656846cc6abc77",
    "bytes": 770593
   },
+  "fastnear/sample/v1.signer/2026-09-03/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 214102784,
+    "to_tx_block_height": 214108614,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:12:16.596Z",
+   "sha256": "0b0243d5e22fc45332a30bc8a2b8ee061a81bc46278ebb4237774e2310624479",
+   "bytes": 122386,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-03/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:12:16.620Z",
+   "sha256": "55dab55f1bcd4887758f1678b97f287109385193abe0972a16dadfedfc770c92",
+   "bytes": 925147
+  },
   "fastnear/sample/v1.signer/2026-09-04/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21756,6 +22277,31 @@
    "fetched_at": "2026-10-31T15:21:20.395Z",
    "sha256": "245a755974c499110dec0bd83efd66a7444e0b73b0d9568f91f78d565e9801bf",
    "bytes": 931250
+  },
+  "fastnear/sample/v1.signer/2026-09-05/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 214380322,
+    "to_tx_block_height": 214386037,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:09:32.876Z",
+   "sha256": "e99cc0b802554ac4b72f0e5f43b81438c278fe99e33148ded3eaa5a226094c65",
+   "bytes": 108300,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-05/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:09:32.901Z",
+   "sha256": "d5693c6c1a2221474c585d48a4d6566564ab027f79083486a0aac130ad821ff2",
+   "bytes": 840946
   },
   "fastnear/sample/v1.signer/2026-09-06/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21782,6 +22328,31 @@
    "sha256": "b32f9cddacfa1226a9aac9063a9f4691d7e206609b6de0f9ccd22609faeda9a1",
    "bytes": 820981
   },
+  "fastnear/sample/v1.signer/2026-09-07/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 214659728,
+    "to_tx_block_height": 214665437,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:05:48.637Z",
+   "sha256": "6acc99438bbdf2b4b63705e39627361924c79d0eaaa507df8c7a3514fc0b48e6",
+   "bytes": 112914,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-07/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:05:48.662Z",
+   "sha256": "d0c75167d73faddffcfd9b43df78df28795b1665e8504043321bcd7385e00a65",
+   "bytes": 828935
+  },
   "fastnear/sample/v1.signer/2026-09-08/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21806,6 +22377,31 @@
    "fetched_at": "2026-10-31T15:16:53.609Z",
    "sha256": "1fa7ceabe56eaf0cfcf5220a2b45b839d065248159dfaaa483df45cb8731cfe2",
    "bytes": 775941
+  },
+  "fastnear/sample/v1.signer/2026-09-09/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 214938662,
+    "to_tx_block_height": 214944459,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T01:02:30.704Z",
+   "sha256": "398008c8e2c5806048a948d8b51b7cb3d285580de83269d76acab540dc4b6488",
+   "bytes": 119661,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-09/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T01:02:30.733Z",
+   "sha256": "0d7f1eca23f4dfd76682d899ae1c69dfa38ac49ee48daccde9f570e0d25e87f9",
+   "bytes": 896349
   },
   "fastnear/sample/v1.signer/2026-09-10/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21832,6 +22428,31 @@
    "sha256": "e46e7b4db15c973a03771e72a17e60493b569b65d44a45b7d1429f3059eecd24",
    "bytes": 771887
   },
+  "fastnear/sample/v1.signer/2026-09-11/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 215218847,
+    "to_tx_block_height": 215224464,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:59:36.389Z",
+   "sha256": "01babbf019e91ae61c58c2f2024cb216bf8e550102bd38321776c14b0d31a0d7",
+   "bytes": 109358,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-11/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:59:36.413Z",
+   "sha256": "1a165be227cea8c9815421a757b70cff88b5f1c137df1cfdc0d3a92b7b034851",
+   "bytes": 854555
+  },
   "fastnear/sample/v1.signer/2026-09-12/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21856,6 +22477,31 @@
    "fetched_at": "2026-10-31T13:45:21.249Z",
    "sha256": "b5d272da1e8a6bfa3c04b6fbe527e71246140851ae199a73b7db58d34e2626ee",
    "bytes": 779004
+  },
+  "fastnear/sample/v1.signer/2026-09-13/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 215496855,
+    "to_tx_block_height": 215502672,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:57:00.957Z",
+   "sha256": "8925d5b0279003cecf9de37ae8bc38ab942c254093cf61040ff6a94b105cdab0",
+   "bytes": 100861,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-13/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:57:00.977Z",
+   "sha256": "ee92173958fa7618e5a8e8e4e281dee36de08b0e18730b65d91861989f7f2149",
+   "bytes": 806998
   },
   "fastnear/sample/v1.signer/2026-09-14/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21882,6 +22528,31 @@
    "sha256": "f650694f991f5c2a8c5cc5c8fd249f7a03635ebf638665fd7d9fdeba30211a40",
    "bytes": 665955
   },
+  "fastnear/sample/v1.signer/2026-09-15/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 215776631,
+    "to_tx_block_height": 215782409,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:54:30.941Z",
+   "sha256": "54b8dda9c6d23faacc122b28d0643022385ddc1551a4aae8b113b44bdd238e96",
+   "bytes": 95507,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-15/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:54:30.964Z",
+   "sha256": "7934208534b253c25796de9d1cb2cb82d369e73502d896f5faeeb60960cea312",
+   "bytes": 681269
+  },
   "fastnear/sample/v1.signer/2026-09-16/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21906,6 +22577,31 @@
    "fetched_at": "2026-10-31T13:41:42.418Z",
    "sha256": "f0be7e9a583419d2530cd656eaac38b5017c5052ba2d8e3d092d275ee6ffcf09",
    "bytes": 674186
+  },
+  "fastnear/sample/v1.signer/2026-09-17/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 216057006,
+    "to_tx_block_height": 216062834,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:50:02.637Z",
+   "sha256": "1e3eb1520085af2d014e15201a022b59dbe1bc04e84bc3e6805249f01f4b3ae1",
+   "bytes": 115094,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-17/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:50:02.662Z",
+   "sha256": "225b20e24d65bde935fbcd44edc23e9a1ea1a2c98d04e4f27feab083274ce782",
+   "bytes": 785050
   },
   "fastnear/sample/v1.signer/2026-09-18/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21932,6 +22628,31 @@
    "sha256": "a47f1edfca5890db57687e939c7945f21b5837769e056b7d3462499d0ddf16de",
    "bytes": 693394
   },
+  "fastnear/sample/v1.signer/2026-09-19/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 216340531,
+    "to_tx_block_height": 216346538,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:47:24.197Z",
+   "sha256": "f374e9cbbd9f446666b6ab539d5e79102f0eec0f2d49127dceaeea1905fddb08",
+   "bytes": 104836,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-19/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:47:24.218Z",
+   "sha256": "fbebfbb9562e8e78c733aaa73cab61e20aa3ac667f899568dc36f029f5e9023e",
+   "bytes": 729080
+  },
   "fastnear/sample/v1.signer/2026-09-20/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -21956,6 +22677,31 @@
    "fetched_at": "2026-10-31T13:36:18.604Z",
    "sha256": "629c14d7e786a0d15f014d3b0f230752ecbb0f12376b583913a7c2038bbc6e91",
    "bytes": 731909
+  },
+  "fastnear/sample/v1.signer/2026-09-21/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 216624450,
+    "to_tx_block_height": 216630375,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:42:09.424Z",
+   "sha256": "27dd6f70bc40859f514b7865e159d520210e7ecb97919ac4202f8e57d59c9a12",
+   "bytes": 157109,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-21/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:42:09.454Z",
+   "sha256": "3a81b57b4c4571eef5e2b388f8356b538a46e0156e1f2b16fbafd300bbde55c9",
+   "bytes": 985424
   },
   "fastnear/sample/v1.signer/2026-09-22/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -21982,6 +22728,31 @@
    "sha256": "1723af7a582c539d8e99d3f0e90f83b2f1b085a16b61bb7412378a3b071f4cbe",
    "bytes": 739739
   },
+  "fastnear/sample/v1.signer/2026-09-23/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 216905536,
+    "to_tx_block_height": 216911172,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:39:27.771Z",
+   "sha256": "6e4b9658298609da1d0ff6f3f7130daa3e0d733e32f44656a5af3167ca9c4c83",
+   "bytes": 92773,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-23/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:39:27.787Z",
+   "sha256": "46aafb14f023ae9c0d625c97bd10a8ce2528bbbf455b9839875e14ad6a2edfd7",
+   "bytes": 741315
+  },
   "fastnear/sample/v1.signer/2026-09-24/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22006,6 +22777,31 @@
    "fetched_at": "2026-10-31T13:31:58.299Z",
    "sha256": "60586719bea7cc869d60092cc5a52796fd556fcae79f667da65265600c5007da",
    "bytes": 649655
+  },
+  "fastnear/sample/v1.signer/2026-09-25/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 217191298,
+    "to_tx_block_height": 217197341,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:36:31.777Z",
+   "sha256": "2af72af9cb3799d3423172a3782d1cc996d36e91df6fba6cd5ea16b73783c83f",
+   "bytes": 88203,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-25/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:36:31.793Z",
+   "sha256": "02ce6fa6f5233a1e1fbb7756234fd2cc5dd88f222d0b189a83ebd37a040190ff",
+   "bytes": 688119
   },
   "fastnear/sample/v1.signer/2026-09-26/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22032,6 +22828,31 @@
    "sha256": "2803e90e9f8fb1ff31098d505d968f7d23ea889f6df9720ecbe6400914b87d5a",
    "bytes": 663254
   },
+  "fastnear/sample/v1.signer/2026-09-27/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 217483240,
+    "to_tx_block_height": 217489296,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:34:02.831Z",
+   "sha256": "4576e08297b3aeb282eddd932d21e774de710dff7f262a15eeadba151a16ffed",
+   "bytes": 96810,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-27/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:34:02.855Z",
+   "sha256": "9d4de222fa287288d66e66a136a81b0453ca83dd49bd44c4af2b0cb826a4f34f",
+   "bytes": 719237
+  },
   "fastnear/sample/v1.signer/2026-09-28/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22056,6 +22877,31 @@
    "fetched_at": "2026-10-31T13:28:23.293Z",
    "sha256": "f19e7a70caa6c5bd27ad25df9050ef01e703eeae1541973fe1481415ee804e97",
    "bytes": 663838
+  },
+  "fastnear/sample/v1.signer/2026-09-29/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 217774191,
+    "to_tx_block_height": 217780088,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:30:55.174Z",
+   "sha256": "ca94bd5ed369207cc29550e8d6978ef91cbaea61a7329b49d098f92aa6156454",
+   "bytes": 82381,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-09-29/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:30:55.191Z",
+   "sha256": "18c3a856add1e0a30fcacab83e752774a34bc44af0389acf991bd788c5e8bcc4",
+   "bytes": 638948
   },
   "fastnear/sample/v1.signer/2026-09-30/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22082,6 +22928,31 @@
    "sha256": "6edf01416ceca528bbcf714dd247f17f446afd5c55f36f8830f6c15e2426a87b",
    "bytes": 388665
   },
+  "fastnear/sample/v1.signer/2026-10-01/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 218055475,
+    "to_tx_block_height": 218060493,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:27:54.226Z",
+   "sha256": "5214fc6b19f1083f5967c87eb5f46dd5bb4bf3cb079a3cb269366521aa0c8a5d",
+   "bytes": 51898,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-01/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:27:54.237Z",
+   "sha256": "a3199e59d4dba9c77dd2eeaeb68b209168ef073e6a6462236eaacb34b605b69e",
+   "bytes": 515257
+  },
   "fastnear/sample/v1.signer/2026-10-02/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22106,6 +22977,31 @@
    "fetched_at": "2026-10-31T13:25:33.522Z",
    "sha256": "83a7fb493f52066e6fc3cc08f1f37f56ab3ebd851bec5822a1c01612d271320b",
    "bytes": 2063034
+  },
+  "fastnear/sample/v1.signer/2026-10-03/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 218347132,
+    "to_tx_block_height": 218353262,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:24:57.066Z",
+   "sha256": "ec14ff8c805929828fbcbb6fc5a9ce62cc54257519c6b976138255ebec393ca7",
+   "bytes": 90390,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-03/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:24:57.086Z",
+   "sha256": "b3c4f6caabae2300cf7a823e7efa44626a64da11650a8e2a7ff055dfbcdacd9f",
+   "bytes": 727085
   },
   "fastnear/sample/v1.signer/2026-10-04/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22132,6 +23028,31 @@
    "sha256": "6a360ec11a84a7901eee99b0185af5afaf97c50d3b8d48e893ca8c0573f09a28",
    "bytes": 568316
   },
+  "fastnear/sample/v1.signer/2026-10-05/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 218641000,
+    "to_tx_block_height": 218647127,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:23:35.555Z",
+   "sha256": "830255fa804a34b75d941634033fd9b08aad913e8d1bf6ec7907ae63cabca4df",
+   "bytes": 59811,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-05/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:23:35.569Z",
+   "sha256": "9f94e0e4daa343ecc8cdfeeed11b04ef7548c4e5ce4094ce6d3b335b32d20464",
+   "bytes": 581072
+  },
   "fastnear/sample/v1.signer/2026-10-06/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22156,6 +23077,31 @@
    "fetched_at": "2026-10-31T13:22:22.885Z",
    "sha256": "8fe1de89c54e050ebe410049c7163f28f0340e00feeb50f163a3cf74d5c6c1c7",
    "bytes": 713819
+  },
+  "fastnear/sample/v1.signer/2026-10-07/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 218934527,
+    "to_tx_block_height": 218940566,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:20:50.974Z",
+   "sha256": "cccec86072cf66a1423a91d34649418b23035b84cb2384c96e88952ddd9318f3",
+   "bytes": 76080,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-07/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:20:50.991Z",
+   "sha256": "9bcf4ba55cde174a32f6f310925c1f1a024cea16a9c5d0f90e33337a5ef5f64d",
+   "bytes": 757506
   },
   "fastnear/sample/v1.signer/2026-10-08/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22182,6 +23128,31 @@
    "sha256": "0fe86413c549c0f862d0f486bbc38c61b54137a419801c8b70319ad897399e36",
    "bytes": 772711
   },
+  "fastnear/sample/v1.signer/2026-10-09/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 219227450,
+    "to_tx_block_height": 219233574,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:15:56.777Z",
+   "sha256": "39fe853c8dc216412cf3d07d5e3f371e573eb459d15c531ccfa0017d07576ab7",
+   "bytes": 84719,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-09/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:15:56.795Z",
+   "sha256": "cc594a1b0f3ffc1eec69b94e69a121fb8b3d01e503154e260f1136492cd6180f",
+   "bytes": 834287
+  },
   "fastnear/sample/v1.signer/2026-10-10/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22206,6 +23177,31 @@
    "fetched_at": "2026-10-31T13:19:12.582Z",
    "sha256": "0970bc3ed852fa0be073559eb300ba310a5c3b88afc519f68b240a0a96077a29",
    "bytes": 783331
+  },
+  "fastnear/sample/v1.signer/2026-10-11/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 219521194,
+    "to_tx_block_height": 219527331,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:13:48.402Z",
+   "sha256": "dad1797bd6d456fd866ebdfec6bc1c03fa4c8899c833917951d825d2b1502dad",
+   "bytes": 67394,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-11/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:13:48.418Z",
+   "sha256": "60665a02fb216ad798fc2522d34694ee24aa4cbd83856031e1fc8c8f353100ca",
+   "bytes": 748479
   },
   "fastnear/sample/v1.signer/2026-10-12/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22232,6 +23228,31 @@
    "sha256": "ca0b7bab524763a269875573c67198cf75333e73553db490784f4fa3a5392c74",
    "bytes": 780731
   },
+  "fastnear/sample/v1.signer/2026-10-13/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 219813762,
+    "to_tx_block_height": 219819829,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:09:46.831Z",
+   "sha256": "00ca7a92bf85da8fe2189b9f283f3a75d781344f56eb0a7e967c65e8b692109d",
+   "bytes": 79507,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-13/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:09:46.848Z",
+   "sha256": "b9e7459bd57ee3e23e5d19632626b0669c2089abc032859bbe25193b2ccbdb71",
+   "bytes": 830839
+  },
   "fastnear/sample/v1.signer/2026-10-14/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22256,6 +23277,31 @@
    "fetched_at": "2026-10-31T13:15:55.799Z",
    "sha256": "d2584ed3b6c61c2c5227139e6e1c5cb226aa4dc7c40c3fa75585c15e909aa2e9",
    "bytes": 798228
+  },
+  "fastnear/sample/v1.signer/2026-10-15/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 220074564,
+    "to_tx_block_height": 220080677,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:06:44.056Z",
+   "sha256": "f282db115297e67634e3c580d5b953c1ab294385178cc9f21f096b35c53fbc11",
+   "bytes": 72259,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-15/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:06:44.074Z",
+   "sha256": "611ada95aac73dd65aec5511e09ec7e9b3b22a651684c0088f38a3ab8219f159",
+   "bytes": 840349
   },
   "fastnear/sample/v1.signer/2026-10-16/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22282,6 +23328,31 @@
    "sha256": "bb8142248f5ccb95b2afb91f653387741be458fd6cd8bcb7996760df4ba130e2",
    "bytes": 791408
   },
+  "fastnear/sample/v1.signer/2026-10-17/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 220364438,
+    "to_tx_block_height": 220370454,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:04:22.771Z",
+   "sha256": "5632c76c3e78c37bcd5b0f23be44b10d6c703d7434c898cb8f2bd87815ba5944",
+   "bytes": 61701,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-17/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:04:22.788Z",
+   "sha256": "98993cf74c7bcbbd806b39194b1888e5c436298b6009d521571881b8dd8333c3",
+   "bytes": 739527
+  },
   "fastnear/sample/v1.signer/2026-10-18/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22306,6 +23377,31 @@
    "fetched_at": "2026-10-31T13:12:52.764Z",
    "sha256": "5c45237a030686d150916f3497cc75abf6c380c6732891d2d310b1a528f74ab2",
    "bytes": 699191
+  },
+  "fastnear/sample/v1.signer/2026-10-19/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 220654167,
+    "to_tx_block_height": 220660210,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-08T00:01:41.027Z",
+   "sha256": "a5fe19ef138f80fb95b51c683c10873fa4569b487d24db1005b9d2ef753ad565",
+   "bytes": 70159,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-19/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-08T00:01:41.046Z",
+   "sha256": "7aadd17830797b217d85885b682f09a59476bdebd6b0ea901b7d0347c2b5e55a",
+   "bytes": 783708
   },
   "fastnear/sample/v1.signer/2026-10-20/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22332,6 +23428,31 @@
    "sha256": "00f49c29befbec20a84bb420712106918046ffdac71019209f880e8ee9d5a21a",
    "bytes": 784162
   },
+  "fastnear/sample/v1.signer/2026-10-21/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 220942749,
+    "to_tx_block_height": 220948837,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:57:59.165Z",
+   "sha256": "41dbd3cdade29c50dfdbf384a18a764d05e706f49558fd94a0db9dd729d66d4d",
+   "bytes": 68226,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-21/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:57:59.181Z",
+   "sha256": "9b2e84423fc4316517af3c73c855372a1e0dec18f51ce4102a215077f7b2c22f",
+   "bytes": 841753
+  },
   "fastnear/sample/v1.signer/2026-10-22/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22356,6 +23477,31 @@
    "fetched_at": "2026-10-31T13:09:51.597Z",
    "sha256": "60c8b327c376d69db53f38ceb726f20a90f071e09da039c80cc2c360d4ace1cf",
    "bytes": 702041
+  },
+  "fastnear/sample/v1.signer/2026-10-23/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 221234804,
+    "to_tx_block_height": 221241066,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:55:50.955Z",
+   "sha256": "b45c896a22d56afbd15ec177f3f2819db98ed614b760af16d9507ad2aaa8e0bb",
+   "bytes": 65436,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-23/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:55:50.975Z",
+   "sha256": "fc0c5ab10ca493abf2a3de7a2240bba6fc3675fb7ee1239fd34067cc8a06a144",
+   "bytes": 749963
   },
   "fastnear/sample/v1.signer/2026-10-24/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22382,6 +23528,31 @@
    "sha256": "14dee9515673b7180387aa507ac26539a6f14367ad7c3aa36f9bc5c4fd4177e2",
    "bytes": 732169
   },
+  "fastnear/sample/v1.signer/2026-10-25/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 221536131,
+    "to_tx_block_height": 221542374,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:52:07.265Z",
+   "sha256": "67633bb6d1485df8d6bb4d2751b85a2d52db1b89c1a6fbba892209b13804731f",
+   "bytes": 71447,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-25/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:52:07.283Z",
+   "sha256": "6b44ada7c11b79793b97b12810362efcfc96dbf841259cd5276361cc3f737f3f",
+   "bytes": 784097
+  },
   "fastnear/sample/v1.signer/2026-10-26/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22406,6 +23577,31 @@
    "fetched_at": "2026-10-31T13:06:53.843Z",
    "sha256": "4fe42b7c367f66933186d2f14fb8ef91b9845ffc8e5cf8c95066b238963a8942",
    "bytes": 746847
+  },
+  "fastnear/sample/v1.signer/2026-10-27/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 221823819,
+    "to_tx_block_height": 221830117,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:48:53.500Z",
+   "sha256": "12d88bff0a0f35506cc28ceb51919cae2518644f0e8999281a175de39cfe94cf",
+   "bytes": 70443,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-27/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:48:53.518Z",
+   "sha256": "a117aef79b04ff179ed62af818d497aa19e89bede046133b34bdca9f2f7d735e",
+   "bytes": 781363
   },
   "fastnear/sample/v1.signer/2026-10-28/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
@@ -22432,6 +23628,31 @@
    "sha256": "b449063b5c0a0463c42265bafcacd595b1ed14d1f471d6c9810e79f2ef27a573",
    "bytes": 707395
   },
+  "fastnear/sample/v1.signer/2026-10-29/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 222121903,
+    "to_tx_block_height": 222127898,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:45:59.400Z",
+   "sha256": "e03697ae8df821a967c897992842aba968c9bce112ed56e9b48f0311131a3d50",
+   "bytes": 61642,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-29/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:45:59.417Z",
+   "sha256": "cca85049b73581ed593631624117e67447a1673d846a4602c1aff9155014c04c",
+   "bytes": 731145
+  },
   "fastnear/sample/v1.signer/2026-10-30/account_rows.json.gz": {
    "url": "https://tx.main.fastnear.com/v0/account",
    "method": "POST",
@@ -22457,21 +23678,153 @@
    "sha256": "b3e555d09d09fbc70645159c0a43e1d24fa6dc703336531f2936db86b9cc2fb3",
    "bytes": 749423
   },
+  "fastnear/sample/v1.signer/2026-10-31/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 222417540,
+    "to_tx_block_height": 222423662,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:42:03.627Z",
+   "sha256": "97a42d78db198a8c8a097ab142a9935826c8586af5ca89c668dd9e450c70c0f9",
+   "bytes": 69141,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-10-31/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:42:03.649Z",
+   "sha256": "d034c10890f8f933847767c2153893e512c34593dd1a29f6057f4f328aeb7dd7",
+   "bytes": 764964
+  },
+  "fastnear/sample/v1.signer/2026-11-02/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 222716051,
+    "to_tx_block_height": 222722149,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:39:15.056Z",
+   "sha256": "5c476aa524806775b2b2c7c7df68f426b00c292945d3096aa6d29cdb9a822df0",
+   "bytes": 37108,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-11-02/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:39:15.069Z",
+   "sha256": "16e6e81fa54377ad9bb36a8f19dac4aa084963c82b359eeed190df121dc86124",
+   "bytes": 613416
+  },
+  "fastnear/sample/v1.signer/2026-11-04/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 223013633,
+    "to_tx_block_height": 223019769,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:35:37.692Z",
+   "sha256": "c0f002699f8f6526a12508d05a8e8ed7fa6e8d52b5cb663d237be96ecb1039d4",
+   "bytes": 68262,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-11-04/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:35:37.711Z",
+   "sha256": "f88ff81a8a7e4ada9fbb2b468499da0e197fa05f75b54e21dbb94e7fd8c55830",
+   "bytes": 737408
+  },
+  "fastnear/sample/v1.signer/2026-11-06/account_rows.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/account",
+   "method": "POST",
+   "body": {
+    "account_id": "v1.signer",
+    "limit": 200,
+    "from_tx_block_height": 223312868,
+    "to_tx_block_height": 223319025,
+    "resume_token": "<paged>"
+   },
+   "fetched_at": "2026-11-07T23:33:01.743Z",
+   "sha256": "2f661636fc448913b917ebff432929f85bf64311d680e04e25c5a3103e725502",
+   "bytes": 60775,
+   "note": "gzip JSON; all pages of the 12:00-12:59 UTC window"
+  },
+  "fastnear/sample/v1.signer/2026-11-06/transactions.json.gz": {
+   "url": "https://tx.main.fastnear.com/v0/transactions",
+   "method": "POST",
+   "body": {
+    "tx_hashes": "<20 hashes per call, see account_rows file>"
+   },
+   "fetched_at": "2026-11-07T23:33:01.767Z",
+   "sha256": "3400c297609f489b24b1ae90fbf12539203b1cfa73c1d70ec4a7cb0559752ed6",
+   "bytes": 674330
+  },
   "nearblocks/charts.json": {
    "url": "https://api.nearblocks.io/v1/charts",
    "method": "GET",
    "body": null,
-   "fetched_at": "2026-10-31T11:23:17.885Z",
-   "sha256": "13e621301fdda89e138a185cd5a2bf8e0ad9236de0f7b4160744c6c6d0b426b1",
-   "bytes": 1535267
+   "fetched_at": "2026-11-07T23:31:12.966Z",
+   "sha256": "4c0875cb044924e986ea0e00cefca4cba7fbb5335d7db374df34b6a56026c24a",
+   "bytes": 1539978
   },
   "nearblocks/stats.json": {
    "url": "https://api.nearblocks.io/v1/stats",
    "method": "GET",
    "body": null,
-   "fetched_at": "2026-10-31T16:10:54.431Z",
-   "sha256": "fb280e851dd66b285d61594aee478022ffc248609df496a806d8ee00d282735c",
-   "bytes": 478
+   "fetched_at": "2026-11-07T23:31:13.870Z",
+   "sha256": "a198ed5012222eb31fa3d185eb8f4520c0639ad7782921f682f126bfb81c0b4b",
+   "bytes": 479
+  },
+  "nearrpc/block_2025-11-07.json": {
+   "url": "https://archival-rpc.mainnet.fastnear.com",
+   "method": "POST",
+   "body": {
+    "jsonrpc": "2.0",
+    "id": "signing-layer",
+    "method": "block",
+    "params": {
+     "block_id": 171546781
+    }
+   },
+   "fetched_at": "2026-11-08T01:52:37.736Z",
+   "sha256": "295ad66921f08cc46c1096e57ea6c988c9f748fa574625c986572258d8f9ef4e",
+   "bytes": 19104,
+   "note": "NEAR JSON-RPC block at B(2025-11-07), the first block with timestamp >= 2025-11-07 00:00 UTC; header.total_supply is in yoctoNEAR"
+  },
+  "nearrpc/block_2026-11-07.json": {
+   "url": "https://archival-rpc.mainnet.fastnear.com",
+   "method": "POST",
+   "body": {
+    "jsonrpc": "2.0",
+    "id": "signing-layer",
+    "method": "block",
+    "params": {
+     "block_id": 223387847
+    }
+   },
+   "fetched_at": "2026-11-08T01:52:38.195Z",
+   "sha256": "52addf3abc18a579390e9a822535488b2b8178b203ad148690bb6af7bc73d12d",
+   "bytes": 20105,
+   "note": "NEAR JSON-RPC block at B(2026-11-07), the first block with timestamp >= 2026-11-07 00:00 UTC; header.total_supply is in yoctoNEAR"
   }
  }
 }

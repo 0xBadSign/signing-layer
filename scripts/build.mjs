@@ -433,6 +433,9 @@ metrics.near_fees_cross_check = {
   days_compared: pairs.length,
   total_ratio_nearblocks_over_defillama: sumDl ? r4(sumNb / sumDl) : null,
   median_rel_diff_pct: rel.length ? r2(q(rel, 0.5) * 100) : null,
+  median_rel_diff_note: 'median_rel_diff_pct is the median of signed daily differences (positive and negative days cancel); median_abs_rel_diff_pct is the typical size of a daily gap.',
+  median_abs_rel_diff_pct: absRel.length ? r2(q(absRel, 0.5) * 100) : null,
+  share_of_days_within_1pct: absRel.length ? r4(absRel.filter((x) => x <= 0.01).length / absRel.length) : null,
   p90_abs_rel_diff_pct: absRel.length ? r2(q(absRel, 0.9) * 100) : null,
   max_abs_rel_diff_pct: absRel.length ? r2(absRel[absRel.length - 1] * 100) : null,
   days_over_25pct: absRel.filter((x) => x > 0.25).length,
@@ -502,13 +505,46 @@ metrics.sample = {
   halves: halves(),
 };
 
+// Net supply growth: total_supply from two NEAR block headers 365 days apart (B(END+1) and 365 days earlier).
+const near = (yocto) => Number(BigInt(yocto) / 10n ** 18n) / 1e6; // yoctoNEAR -> NEAR, exact to 1e-6
+const SUPPLY_TO = addDays(END, 1);
+const SUPPLY_FROM = addDays(SUPPLY_TO, -365);
+const supplyRel = (d) => `nearrpc/block_${d}.json`;
+const supplyFiles = [supplyRel(SUPPLY_FROM), supplyRel(SUPPLY_TO)].filter((rel) => hasRaw(rel) && manifest.files[rel]);
+{
+  const hdr = (d) => (hasRaw(supplyRel(d)) ? readRawJson(supplyRel(d)).result.header : null);
+  const h0 = hdr(SUPPLY_FROM);
+  const h1 = hdr(SUPPLY_TO);
+  const base = {
+    source: [supplyRel(SUPPLY_FROM), supplyRel(SUPPLY_TO), P.bounds],
+    method: 'NEAR JSON-RPC block header total_supply (yoctoNEAR) at the first block of the UTC day after the window end and at the first block of the day 365 days earlier (heights from fastnear/boundaries.json). The change is net of everything that alters total supply: epoch reward issuance minus burnt transaction fees. It is not the gross inflation rate.',
+  };
+  if (h0 && h1) {
+    const s0 = near(h0.total_supply);
+    const s1 = near(h1.total_supply);
+    const days = (Number(BigInt(h1.timestamp_nanosec) - BigInt(h0.timestamp_nanosec)) / 1e9) / 86400;
+    metrics.net_supply_growth = {
+      ...base,
+      measured: true,
+      from: { date: SUPPLY_FROM, height: h0.height, timestamp_utc: new Date(Number(BigInt(h0.timestamp_nanosec) / 1000000n)).toISOString(), total_supply_near: r2(s0) },
+      to: { date: SUPPLY_TO, height: h1.height, timestamp_utc: new Date(Number(BigInt(h1.timestamp_nanosec) / 1000000n)).toISOString(), total_supply_near: r2(s1) },
+      days: r4(days),
+      net_change_near: r2(s1 - s0),
+      net_growth_pct: r4((s1 / s0 - 1) * 100),
+    };
+  } else {
+    metrics.net_supply_growth = { ...base, measured: false, note: 'not measured: the block header files are missing from data/raw; run node scripts/fetch.mjs --only supply' };
+  }
+}
+
 // Value capture: NEAR's captured Intents revenue (buyback funding) against the market cap snapshot.
 {
   const st = readRawJson(P.stats).stats[0];
-  const near = (yocto) => Number(BigInt(yocto) / 10n ** 18n) / 1e6; // yoctoNEAR -> NEAR, exact to 1e-6
   const mcap = Number(st.market_cap);
   const rev30 = seriesMetrics.intents_revenue_usd.latest_30d_avg;
   const fee30 = seriesMetrics.near_fees_usd_nearblocks.latest_30d_avg;
+  const ns = metrics.net_supply_growth;
+  const netNewUsd = ns.measured ? ns.net_change_near * Number(st.near_price) : null;
   metrics.value_capture = {
     source: [P.stats, P.rev, P.nb],
     snapshot_fetched_at: manifest.files[P.stats].fetched_at,
@@ -522,7 +558,10 @@ metrics.sample = {
     l1_fees_annualized_usd: r2(fee30 * 365),
     l1_fee_yield_annualized_pct: r2(((fee30 * 365) / mcap) * 100),
     intents_revenue_over_l1_fees: r2(rev30 / fee30),
-    method: 'Annualized = latest 30-day average x 365. Yield = annualized USD / market cap snapshot (Nearblocks /v1/stats market_cap, a point-in-time value; the 30-day revenue and the snapshot are from different moments). Protocol token issuance (staking inflation) is not measured here, so these are gross, not net, figures.',
+    net_supply_growth_pct: ns.measured ? ns.net_growth_pct : null,
+    net_new_supply_usd_at_snapshot_price: netNewUsd === null ? null : r2(netNewUsd),
+    buyback_over_net_new_supply: netNewUsd ? r4((rev30 * 365) / netNewUsd) : null,
+    method: 'Annualized = latest 30-day average x 365. Yield = annualized USD / market cap snapshot (Nearblocks /v1/stats market_cap, a point-in-time value; the 30-day revenue and the snapshot are from different moments). Net supply growth comes from net_supply_growth (block headers 365 days apart); net_new_supply_usd_at_snapshot_price values that year of net new NEAR at the snapshot price, and buyback_over_net_new_supply is the annualized buyback funding divided by it (1 would mean the buyback, at this rate, absorbs one year of net new supply).',
   };
 }
 
@@ -530,7 +569,7 @@ const out = {
   schema: 1,
   window: { start: START, end: END },
   note: 'Generated by scripts/build.mjs from data/raw only. Every entry lists its raw source files and method.',
-  raw_provenance: Object.fromEntries([P.nb, P.dex, P.fee, P.rev, P.nearFee, P.proto, P.stats, P.bounds].map((rel) => [rel, { fetched_at: manifest.files[rel].fetched_at, sha256: manifest.files[rel].sha256 }])),
+  raw_provenance: Object.fromEntries([P.nb, P.dex, P.fee, P.rev, P.nearFee, P.proto, P.stats, P.bounds, ...supplyFiles].map((rel) => [rel, { fetched_at: manifest.files[rel].fetched_at, sha256: manifest.files[rel].sha256 }])),
   ...metrics,
 };
 fs.writeFileSync(path.join(OUT, 'metrics.json'), JSON.stringify(out, null, 2) + '\n');

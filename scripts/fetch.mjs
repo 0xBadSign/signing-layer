@@ -1,6 +1,6 @@
 // Incremental, resumable fetch of all raw data into data/raw (keyless public APIs only).
 //
-// usage: node scripts/fetch.mjs [--only static|counts|sample] [--sample-step N] [--sample-days N]
+// usage: node scripts/fetch.mjs [--only static|counts|supply|sample] [--sample-step N] [--sample-days N]
 //                               [--end YYYY-MM-DD] [--refresh-static]
 //
 // Day windows: day D covers the block heights [B(D), B(D+1) - 1], where B(D) is the first block whose
@@ -150,6 +150,32 @@ async function fetchCounts() {
   flushBounds(true);
 }
 
+// ---------------------------------------------------------------- total supply (block headers)
+// NEAR block headers carry total_supply (yoctoNEAR). One header at the first block of the day after the last
+// complete day, and one 365 days earlier, give the measured net supply change over one year (issuance minus
+// burnt fees). Heights come from fastnear/boundaries.json, so the two blocks are exact UTC day boundaries.
+const SUPPLY_RPC = 'https://archival-rpc.mainnet.fastnear.com';
+async function fetchSupply() {
+  const d1 = addDays(lastComplete, 1);
+  for (const d of [addDays(d1, -365), d1]) {
+    const rel = `nearrpc/block_${d}.json`;
+    if (hasRaw(rel)) {
+      log('supply cached', rel);
+      continue;
+    }
+    const b = await dayBoundary(d);
+    const body = { jsonrpc: '2.0', id: 'signing-layer', method: 'block', params: { block_id: b.height } };
+    const fetched_at = new Date().toISOString();
+    const r = await request(SUPPLY_RPC, { method: 'POST', body });
+    const j = JSON.parse(r.text);
+    if (r.status !== 200 || j.error || !j.result?.header?.total_supply) throw new Error(`block ${b.height}: ${r.status} ${r.text.slice(0, 200)}`);
+    saveRaw(rel, r.text, { url: SUPPLY_RPC, method: 'POST', body, fetched_at, note: `NEAR JSON-RPC block at B(${d}), the first block with timestamp >= ${d} 00:00 UTC; header.total_supply is in yoctoNEAR` });
+    log('supply fetched', rel, 'height', b.height);
+    flushManifest();
+  }
+  flushBounds(true);
+}
+
 // ---------------------------------------------------------------- sample
 function validGz(rel) {
   if (!hasRaw(rel)) return false;
@@ -259,6 +285,7 @@ try {
   if (only === 'all' || only === 'static') await fetchStatic();
   loadNbBlocks();
   if (only === 'all' || only === 'counts') await fetchCounts();
+  if (only === 'all' || only === 'supply') await fetchSupply();
   if (only === 'all' || only === 'sample') await fetchSample();
 } finally {
   flushBounds(true);
