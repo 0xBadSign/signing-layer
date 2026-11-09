@@ -8,3 +8,6 @@ site/
 # demo video pipeline output
 video/out/
 video/work/
+
+# local-only notes and backups
+.private/

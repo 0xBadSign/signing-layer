@@ -98,7 +98,7 @@ Built for NEAR HACKATHON, Investment Thesis track.
 - AI assistance: development used AI coding agents (Claude Code).
 - Libraries: none. The pipeline, tests, dashboard and server use only the Node 22 standard library (`node:*` modules); there is no `package.json` and no dependency to install. The optional demo-video pipeline in `video/` calls external programs (Google Chrome, ffmpeg), which are tools, not libraries.
 - Data sources: keyless public APIs only (FastNEAR, Nearblocks, DefiLlama). The track's suggested BigQuery and Intents Explorer sources were not used because they need accounts or keys; the suggested sources are hints, not requirements (rule Q-011).
-- Provenance: first commit `d847109` on 2026-10-31 (`git log` is the authority); the submitted state is tagged at submission.
+- Provenance: first commit `3c079db` on 2026-10-31 (`git log` is the authority); the submitted state is tagged at submission.
 
 ## License
 
