@@ -23,3 +23,7 @@ Recapture only some scenes: `node video/capture.mjs --scene signing,capture`, th
 ## After new data
 
 After `make fetch && make rebuild` the numbers in the captions (29,515 a day, 6.4x, +79%, 8% above last November's high, 12 times, 0.51%, 2.48%, 31.5% to 57.3%, minus 79%) are written by hand from THESIS.md; update the caption lines in `shots.json` to match the output of `node scripts/figures.mjs` before rendering. `video/out/signing-layer-75s.mp4` was last rendered on 2026-11-08 from the current captions (1:19).
+
+## Voice-over
+
+`node video/voice.mjs` speaks every caption line with a text-to-speech model (default `canopylabs/orpheus-v1-english` on Groq, voice `troy`; override with `--voice` or `TTS_VOICE`, `TTS_MODEL`, `TTS_BASE_URL`) and lays each clip under the video at its caption's start time. It needs `GROQ_API_KEY` or the key in `.private/groq.key` (gitignored), runs after `render.mjs`, and writes `video/out/<cut>-voice.mp4` next to the silent cut. A clip longer than its caption is sped up by at most 1.2x; anything still too long is reported. Clips are cached in `video/work/tts/`.
