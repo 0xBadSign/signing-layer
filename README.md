@@ -8,9 +8,9 @@
 
 Question: is NEAR becoming the signing and settlement layer for other chains (Chain Signatures MPC contract `v1.signer` plus NEAR Intents `intents.near`) while classic user activity on NEAR falls? This repository holds the thesis, the dashboard, and the data pipeline with its raw data and tests.
 
-**The thesis is in [THESIS.md](THESIS.md); the dashboard is in `web/` (see Dashboard below).** This repository is the Investment Thesis track entry.
+**The thesis is in [THESIS.md](THESIS.md); the dashboard is in `web/`, live at https://0xbadsign.github.io/signing-layer/ (see Dashboard below).** This repository is the Investment Thesis track entry.
 
-Companion project: **Bridle** (AI Security track, same author, independent repository), a DAO vault on testnet that uses Chain Signatures and `verify_foreign_transaction`. This thesis uses none of Bridle's data or claims.
+Companion project: **[Bridle](https://github.com/0xBadSign/bridle)** (AI Security track, same author, independent repository), a DAO vault on testnet that uses Chain Signatures and `verify_foreign_transaction`. This thesis uses none of Bridle's data or claims.
 
 ## What the data is
 
