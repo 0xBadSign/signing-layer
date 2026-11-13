@@ -11,3 +11,9 @@ video/work/
 
 # local-only notes and backups
 .private/
+CLAUDE.local.md
+.env
+.env.*
+*.key
+*.pem
+.near-credentials/
